@@ -47,6 +47,30 @@
           "feedback": "INCORRECTO. Git nunca resolverá un conflicto de contenido por sí solo; requiere intervención humana."
         }
       ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "Después de editar un archivo para resolver un conflicto, debes usar este comando para marcarlo como resuelto:",
+      "fragmento_codigo": "git [....] <archivo>",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "add", "es_correcta": true, "feedback": "¡Correcto! 'git add' le dice a Git que el conflicto en ese archivo ya fue solucionado." },
+        { "texto": "resolve", "es_correcta": false, "feedback": "INCORRECTO. Aunque suene lógico, el comando técnico en Git para confirmar la resolución es 'add'." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q4",
+      "tipo": "completar",
+      "enunciado": "Si el conflicto es muy complicado y decides cancelar la fusión por completo para volver al estado anterior, usas:",
+      "fragmento_codigo": "git merge --[....]",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "abort", "es_correcta": true, "feedback": "¡Exacto! El parámetro '--abort' detiene el proceso de merge y deja todo como estaba antes." },
+        { "texto": "cancel", "es_correcta": false, "feedback": "INCORRECTO. El término correcto que reconoce Git para interrumpir la fusión es 'abort'." }
+      ]
     }
   ]
 }
