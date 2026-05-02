@@ -47,6 +47,30 @@
           "feedback": "INCORRECTO. Git nunca borra tu código sin avisar, te pide ayuda para resolverlo."
         }
       ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "Para traer los cambios de la rama 'feature-login' a tu rama actual, el comando es:",
+      "fragmento_codigo": "git [....] feature-login",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "merge", "es_correcta": true, "feedback": "¡Correcto! Este comando integra la rama especificada en la rama donde estás parado." },
+        { "texto": "combine", "es_correcta": false, "feedback": "INCORRECTO. 'combine' no es un comando de Git; el término técnico es merge." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q4",
+      "tipo": "completar",
+      "enunciado": "Antes de hacer un merge, es una buena práctica usar 'git [....]' para asegurar que tienes lo último del servidor.",
+      "fragmento_codigo": "git [....]",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "pull", "es_correcta": true, "feedback": "¡Exacto! Hacer un pull antes del merge evita conflictos con versiones antiguas." },
+        { "texto": "push", "es_correcta": false, "feedback": "INCORRECTO. El push es para subir cambios, no para preparar una fusión." }
+      ]
     }
   ]
 }
