@@ -1,0 +1,148 @@
+{
+  "_instruccion_general": "Nivel 6: Fusión de Ramas (Merging).",
+  "id": 6,
+  "modulo_id": "m2",
+  "titulo": "Fusión (Merging)",
+  "configuracion": {
+    "puntos_minimos_aprobar": 80
+  },
+  "contenido_wiki": {
+    "cuerpo_markdown": "# Módulo 2: Uniendo el trabajo (Merge)\\n\\n## ¿Qué es el Merging?\\nEs el proceso de integrar los cambios de una rama (como una de nivel o funcionalidad) en otra rama principal (como main o develop).\\n\\n## ¿Cuándo se hace?\\nSe realiza cuando has terminado una tarea en tu rama propia y quieres que esos cambios formen parte del proyecto general para que tus compañeros los vean."
+  },
+  "preguntas": [
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué hace el comando 'git merge'?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Combina el historial y los cambios de una rama dentro de otra.",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Es la forma de unir el trabajo de diferentes personas."
+        },
+        {
+          "texto": "Borra una rama permanentemente del repositorio.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Para borrar se usa 'branch -d', el merge es para unir."
+        }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q2",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué sucede si dos personas modifican la misma línea del mismo archivo antes de un merge?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Se produce un Conflicto de Fusión (Merge Conflict).",
+          "es_correcta": true,
+          "feedback": "¡Exacto! Git se detiene y pide al programador que elija qué cambio conservar."
+        },
+        {
+          "texto": "Git borra automáticamente ambos cambios por seguridad.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Git nunca borra tu código sin avisar, te pide ayuda para resolverlo."
+        }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "Para traer los cambios de la rama 'feature-login' a tu rama actual, el comando es:",
+      "fragmento_codigo": "git [....] feature-login",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "merge", "es_correcta": true, "feedback": "¡Correcto! Este comando integra la rama especificada en la rama donde estás parado." },
+        { "texto": "combine", "es_correcta": false, "feedback": "INCORRECTO. 'combine' no es un comando de Git; el término técnico es merge." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q4",
+      "tipo": "completar",
+      "enunciado": "Antes de hacer un merge, es una buena práctica usar 'git [....]' para asegurar que tienes lo último del servidor.",
+      "fragmento_codigo": "git [....]",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "pull", "es_correcta": true, "feedback": "¡Exacto! Hacer un pull antes del merge evita conflictos con versiones antiguas." },
+        { "texto": "push", "es_correcta": false, "feedback": "INCORRECTO. El push es para subir cambios, no para preparar una fusión." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q5",
+      "tipo": "ordenar",
+      "enunciado": "Ordena los pasos para fusionar una rama de funcionalidad en la rama principal:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "git switch main",
+        "git pull origin main",
+        "git merge feature-name",
+        "git push origin main"
+      ],
+      "feedback": "¡Excelente! Siempre asegúrate de estar en la rama destino y tenerla actualizada antes de fusionar."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q6",
+      "tipo": "ordenar",
+      "enunciado": "Ordena el proceso para resolver un conflicto de fusión:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "Identificar los archivos con conflictos",
+        "Editar los archivos para elegir el código final",
+        "git add (Marcar como resuelto)",
+        "git commit (Finalizar la fusión)"
+      ],
+      "feedback": "¡Perfecto! Una vez que resuelves el código manualmente, debes avisar a Git con un commit."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q7",
+      "tipo": "verdadero_falso",
+      "enunciado": "Al hacer un merge, Git borra automáticamente la rama que fue fusionada.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. La rama sigue existiendo; si ya no la necesitas, debes borrarla manualmente con 'git branch -d'." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Exacto! Git mantiene la rama original intacta después de la fusión." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q8",
+      "tipo": "verdadero_falso",
+      "enunciado": "Un 'Merge Conflict' solo puede ser resuelto por Git de forma automática.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Un conflicto requiere que un humano revise el código y decida qué versión conservar." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Correcto! La intervención manual es obligatoria cuando Git encuentra cambios contradictorios." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q9",
+      "tipo": "deteccion_error",
+      "enunciado": "Un estudiante quiere traer los cambios de 'main' a su rama actual, pero recibe un error que dice 'Your local changes... would be overwritten by merge'. ¿Qué debe hacer?",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "Hacer un commit o un stash de sus cambios locales antes de intentar el merge.", "es_correcta": true, "feedback": "¡Correcto! Git no te permite fusionar si tienes cambios sin guardar que podrían perderse." },
+        { "texto": "Borrar la carpeta del proyecto y volver a clonar.", "es_correcta": false, "feedback": "INCORRECTO. Esa es una solución extrema; lo correcto es guardar el trabajo actual primero." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q10",
+      "tipo": "deteccion_error",
+      "enunciado": "Para integrar la rama 'nivel-6' en 'develop', el usuario hizo: 'git switch nivel-6' y luego 'git merge develop'. ¿Cuál es el error?",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "Está haciendo el merge al revés; debería estar en 'develop' para recibir los cambios de 'nivel-6'.", "es_correcta": true, "feedback": "¡Exacto! El merge siempre trae cambios HACIA la rama donde estás parado." },
+        { "texto": "El nombre de la rama no puede tener guiones.", "es_correcta": false, "feedback": "INCORRECTO. Los nombres de ramas con guiones son totalmente válidos." }
+      ]
+    }
+  ]
+}
