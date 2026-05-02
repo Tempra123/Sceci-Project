@@ -1,0 +1,111 @@
+{
+  "preguntas": [
+    {
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Cuál es el primer estado de un archivo en Git cuando se crea?",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "Staged", "es_correcta": false, "feedback": "INCORRECTO. Aún no está preparado." },
+        { "texto": "Untracked", "es_correcta": true, "feedback": "¡Correcto! Git no lo está siguiendo aún." }
+      ]
+    },
+    {
+      "id": "q2",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué comando agrega un archivo al área de preparación?",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "git commit", "es_correcta": false, "feedback": "INCORRECTO. Ese guarda cambios." },
+        { "texto": "git add", "es_correcta": true, "feedback": "¡Correcto! Agrega al stage." }
+      ]
+    },
+    {
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "Completa el comando para agregar todos los archivos:",
+      "fragmento_codigo": "git add [....]",
+      "puntos": 10,
+      "opciones": [
+        { "texto": ".", "es_correcta": true, "feedback": "¡Correcto! Agrega todo." },
+        { "texto": "*", "es_correcta": false, "feedback": "INCORRECTO. No es la forma estándar en Git." }
+      ]
+    },
+    {
+      "id": "q4",
+      "tipo": "verdadero_falso",
+      "enunciado": "El comando git commit guarda cambios en el repositorio local.",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": true, "feedback": "¡Correcto!" },
+        { "texto": "Falso", "es_correcta": false, "feedback": "INCORRECTO." }
+      ]
+    },
+    {
+      "id": "q5",
+      "tipo": "ordenar",
+      "enunciado": "Ordena el flujo correcto de trabajo en Git:",
+      "puntos": 15,
+      "orden_correcto": [
+        "git add .",
+        "git commit -m \"mensaje\"",
+        "git push origin main"
+      ],
+      "feedback_correcto": "¡Perfecto!",
+      "feedback_incorrecto": "Recuerda: add → commit → push"
+    },
+    {
+      "id": "q6",
+      "tipo": "encuentra_error",
+      "enunciado": "¿Qué parte es incorrecta en este comando?",
+      "fragmento_codigo": "git commit mensaje \"hola\"",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "git", "es_correcta": false, "feedback": "Está correcto." },
+        { "texto": "commit", "es_correcta": false, "feedback": "Está correcto." },
+        { "texto": "mensaje", "es_correcta": true, "feedback": "¡Correcto! Debe ser -m." }
+      ]
+    },
+    {
+      "id": "q7",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué hace git restore <archivo>?",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "Guarda cambios", "es_correcta": false, "feedback": "INCORRECTO." },
+        { "texto": "Revierte cambios al estado anterior", "es_correcta": true, "feedback": "¡Correcto!" }
+      ]
+    },
+    {
+      "id": "q8",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Dónde se guardan los commits?",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "Stage Area", "es_correcta": false, "feedback": "INCORRECTO." },
+        { "texto": "Repositorio local", "es_correcta": true, "feedback": "¡Correcto!" }
+      ]
+    },
+    {
+      "id": "q9",
+      "tipo": "verdadero_falso",
+      "enunciado": "Un commit debe representar un cambio grande y complejo.",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Deben ser pequeños." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Correcto! Deben ser pequeños y claros." }
+      ]
+    },
+    {
+      "id": "q10",
+      "tipo": "completar",
+      "enunciado": "Completa el comando para deshacer el último commit:",
+      "fragmento_codigo": "git reset --soft [....]",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "HEAD~1", "es_correcta": true, "feedback": "¡Correcto!" },
+        { "texto": "HEAD~2", "es_correcta": false, "feedback": "INCORRECTO." }
+      ]
+    }
+  ]
+}
