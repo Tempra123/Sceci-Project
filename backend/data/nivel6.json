@@ -121,6 +121,28 @@
         { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Un conflicto requiere que un humano revise el código y decida qué versión conservar." },
         { "texto": "Falso", "es_correcta": true, "feedback": "¡Correcto! La intervención manual es obligatoria cuando Git encuentra cambios contradictorios." }
       ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q9",
+      "tipo": "deteccion_error",
+      "enunciado": "Un estudiante quiere traer los cambios de 'main' a su rama actual, pero recibe un error que dice 'Your local changes... would be overwritten by merge'. ¿Qué debe hacer?",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "Hacer un commit o un stash de sus cambios locales antes de intentar el merge.", "es_correcta": true, "feedback": "¡Correcto! Git no te permite fusionar si tienes cambios sin guardar que podrían perderse." },
+        { "texto": "Borrar la carpeta del proyecto y volver a clonar.", "es_correcta": false, "feedback": "INCORRECTO. Esa es una solución extrema; lo correcto es guardar el trabajo actual primero." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q10",
+      "tipo": "deteccion_error",
+      "enunciado": "Para integrar la rama 'nivel-6' en 'develop', el usuario hizo: 'git switch nivel-6' y luego 'git merge develop'. ¿Cuál es el error?",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "Está haciendo el merge al revés; debería estar en 'develop' para recibir los cambios de 'nivel-6'.", "es_correcta": true, "feedback": "¡Exacto! El merge siempre trae cambios HACIA la rama donde estás parado." },
+        { "texto": "El nombre de la rama no puede tener guiones.", "es_correcta": false, "feedback": "INCORRECTO. Los nombres de ramas con guiones son totalmente válidos." }
+      ]
     }
   ]
 }
