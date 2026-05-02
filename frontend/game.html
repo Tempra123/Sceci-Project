@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitChallenge ⚔️ — Juego</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Layout del juego ── */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    /* ── HUD superior ── */
+    .hud {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 780px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.2rem;
+      background: rgba(20,15,42,0.7);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hud-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hud-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* Puntos */
+    .score-display {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .score-display .score-val {
+      color: var(--accent);
+      font-size: 1.1rem;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .score-display .score-val.bump {
+      transform: scale(1.4);
+      color: var(--green-ok);
+    }
+
+    /* Contador de pregunta */
+    .question-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Barra de progreso ── */
+    .progress-bar-wrap {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 780px;
+      height: 5px;
+      background: rgba(124,58,237,0.15);
+      border-radius: 99px;
+      margin-bottom: 1.8rem;
+      overflow: hidden;
+      animation: fadeIn 0.6s ease both;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--purple-glow), var(--accent));
+      border-radius: 99px;
+      transition: width 0.5s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 0 8px rgba(168,85,247,0.7);
+    }
+
+    /* ── Tarjeta de pregunta ── */
+    .question-card {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 780px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem 2.2rem 1.8rem;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-glow);
+      animation: scaleIn 0.45s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    /* Tipo de pregunta */
+    .question-type {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple-core);
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .question-type::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--purple-core);
+      animation: blink 1.5s ease infinite;
+    }
+    @keyframes blink {
+      0%,100%{opacity:1} 50%{opacity:0.2}
+    }
+
+    /* Enunciado */
+    .question-text {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    /* Fragmento de código */
+    .code-fragment {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(124,58,237,0.3);
+      border-left: 3px solid var(--purple-core);
+      border-radius: 6px;
+      padding: 0.8rem 1.2rem;
+      color: var(--accent-cyan);
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Opciones de respuesta ── */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-top: 0.6rem;
+    }
+    /* Para preguntas con muchas opciones o de ordenar, usar 1 columna */
+    .options-grid.single-col {
+      grid-template-columns: 1fr;
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem 1.2rem;
+      background: rgba(124,58,237,0.08);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+      text-align: left;
+      color: var(--text);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      position: relative;
+      overflow: hidden;
+    }
+    .option-btn .opt-letter {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.7rem;
+      color: var(--purple-core);
+      min-width: 24px;
+      height: 24px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .option-btn:hover:not(:disabled) {
+      background: rgba(124,58,237,0.2);
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+    }
+    .option-btn:hover:not(:disabled) .opt-letter {
+      background: var(--purple-glow);
+      border-color: var(--purple-glow);
+      color: #fff;
+    }
+    .option-btn:disabled { cursor: not-allowed; }
+
+    /* Estados: correcto / incorrecto */
+    .option-btn.correct {
+      background: rgba(74,222,128,0.15);
+      border-color: var(--green-ok);
+    }
+    .option-btn.correct .opt-letter {
+      background: var(--green-ok);
+      border-color: var(--green-ok);
+      color: #000;
+    }
+    .option-btn.wrong {
+      background: rgba(248,113,113,0.12);
+      border-color: var(--red-wrong);
+      opacity: 0.7;
+    }
+    .option-btn.wrong .opt-letter {
+      background: var(--red-wrong);
+      border-color: var(--red-wrong);
+      color: #000;
+    }
+
+    /* ── Feedback ── */
+    .feedback-box {
+      margin-top: 1.2rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      display: none;
+      animation: fadeUp 0.3s ease both;
+    }
+    .feedback-box.show { display: block; }
+    .feedback-box.ok {
+      background: rgba(74,222,128,0.12);
+      border: 1px solid rgba(74,222,128,0.35);
+      color: var(--green-ok);
+    }
+    .feedback-box.fail {
+      background: rgba(248,113,113,0.1);
+      border: 1px solid rgba(248,113,113,0.3);
+      color: var(--red-wrong);
+    }
+
+    /* ── Botón Siguiente ── */
+    .btn-next {
+      margin-top: 1.5rem;
+      display: none;
+      width: 100%;
+      padding: 0.9rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      background: transparent;
+      border: 1px solid var(--border-bright);
+      border-radius: 8px;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-next.show { display: block; }
+    .btn-next:hover {
+      background: rgba(124,58,237,0.25);
+      color: var(--text);
+    }
+
+    /* ══════════════════════
+       PANTALLA DE RESULTADOS
+    ══════════════════════ */
+    .results-screen {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      padding: 3rem 2rem;
+      animation: scaleIn 0.6s cubic-bezier(.16,1,.3,1) both;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.8rem;
+    }
+    .results-screen.show {
+      display: flex;
+    }
+
+    .result-trophy {
+      font-size: 4rem;
+      filter: drop-shadow(0 0 24px gold);
+      animation: bounce 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-10px); }
+    }
+
+    .result-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      background: linear-gradient(135deg, gold, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .result-score-big {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      color: var(--accent);
+      text-shadow: 0 0 30px rgba(232,121,249,0.6);
+    }
+    .result-score-big span {
+      font-size: 0.45em;
+      color: var(--muted);
+    }
+
+    .result-stats {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .result-message {
+      color: var(--text-dim);
+      font-size: 1.05rem;
+      max-width: 380px;
+      line-height: 1.6;
+    }
+
+    .btn-restart {
+      background: linear-gradient(135deg, #b45309, #d97706);
+      box-shadow: 0 0 24px rgba(217,119,6,0.4);
+    }
+    .btn-restart:hover {
+      box-shadow: 0 0 44px rgba(217,119,6,0.7);
+    }
+
+    /* ══════════════════════
+       TIMER
+    ══════════════════════ */
+    .timer-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .timer-circle {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text);
+      transition: border-color 0.3s, color 0.3s;
+      position: relative;
+    }
+    .timer-circle.warning {
+      border-color: #f97316;
+      color: #f97316;
+      animation: shake 0.4s ease infinite;
+    }
+    .timer-circle.danger {
+      border-color: var(--red-wrong);
+      color: var(--red-wrong);
+      animation: shake 0.2s ease infinite;
+    }
+    @keyframes shake {
+      0%,100%{transform:translateX(0)} 25%{transform:translateX(-2px)} 75%{transform:translateX(2px)}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo -->
+  <div class="bg-layer">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- ── HUD ── -->
+  <header class="hud" id="hud">
+    <div class="hud-logo">⚔️ GITCHALLENGE</div>
+    <div class="hud-right">
+      <div class="score-display">
+        ★ <span class="score-val" id="score-val">0</span> pts
+      </div>
+      <div class="timer-wrap">
+        <div class="timer-circle" id="timer-circle">
+          <span id="timer-text">20</span>
+        </div>
+      </div>
+      <div class="question-counter" id="q-counter">1 / 10</div>
+    </div>
+  </header>
+
+  <!-- ── Barra de progreso ── -->
+  <div class="progress-bar-wrap" id="progress-wrap">
+    <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+  </div>
+
+  <!-- ── Tarjeta de pregunta ── -->
+  <section class="question-card" id="question-card">
+    <div class="question-type" id="q-type">Cargando...</div>
+    <p class="question-text" id="q-text"></p>
+    <div class="code-fragment" id="q-code" style="display:none"></div>
+    <div class="options-grid" id="options-grid"></div>
+    <div class="feedback-box" id="feedback-box"></div>
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()">
+      SIGUIENTE PREGUNTA →
+    </button>
+  </section>
+
+  <!-- ── Pantalla de resultados ── -->
+  <section class="results-screen" id="results-screen">
+    <div class="result-trophy" id="result-trophy">🏆</div>
+    <h2 class="result-title" id="result-title">¡Desafío Completado!</h2>
+    <div class="result-score-big" id="result-score">
+      0 <span>/ 115 pts</span>
+    </div>
+    <div class="result-stats" id="result-stats"></div>
+    <p class="result-message" id="result-message"></p>
+    <a href="index.html" class="btn-primary btn-restart">↩ Volver al inicio</a>
+  </section>
+
+  <!-- app.js maneja toda la lógica -->
+  <script src="app.js"></script>
+  <script>
+    // Partículas de fondo
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 25; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.width = p.style.height = (Math.random() * 2.5 + 1.5) + 'px';
+      p.style.animationDuration = (Math.random() * 12 + 8) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      container.appendChild(p);
+    }
+  </script>
+</body>
+</html>
