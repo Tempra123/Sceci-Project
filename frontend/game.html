@@ -6,7 +6,6 @@
   <title>GitChallenge ⚔️ — Juego</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* ── Layout del juego ── */
     body {
       display: flex;
       flex-direction: column;
@@ -32,24 +31,20 @@
       margin-bottom: 1.8rem;
       animation: fadeUp 0.5s ease both;
     }
-
+    .hud-left { display: flex; flex-direction: column; gap: 0.2rem; }
     .hud-logo {
       font-family: 'Orbitron', sans-serif;
       font-size: 0.9rem;
       letter-spacing: 0.1em;
       color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
-
-    .hud-right {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
+    #nivel-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
     }
-
-    /* Puntos */
+    .hud-right { display: flex; align-items: center; gap: 1.5rem; }
     .score-display {
       font-family: 'Orbitron', sans-serif;
       font-size: 0.85rem;
@@ -58,36 +53,27 @@
       align-items: center;
       gap: 0.4rem;
     }
-    .score-display .score-val {
+    .score-val {
       color: var(--accent);
       font-size: 1.1rem;
       transition: transform 0.2s, color 0.2s;
     }
-    .score-display .score-val.bump {
-      transform: scale(1.4);
-      color: var(--green-ok);
-    }
-
-    /* Contador de pregunta */
+    .score-val.bump { transform: scale(1.4); color: var(--green-ok); }
     .question-counter {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.78rem;
       color: var(--muted);
-      letter-spacing: 0.05em;
     }
 
     /* ── Barra de progreso ── */
     .progress-bar-wrap {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 780px;
+      position: relative; z-index: 10;
+      width: 100%; max-width: 780px;
       height: 5px;
       background: rgba(124,58,237,0.15);
       border-radius: 99px;
       margin-bottom: 1.8rem;
       overflow: hidden;
-      animation: fadeIn 0.6s ease both;
     }
     .progress-bar-fill {
       height: 100%;
@@ -99,10 +85,8 @@
 
     /* ── Tarjeta de pregunta ── */
     .question-card {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 780px;
+      position: relative; z-index: 10;
+      width: 100%; max-width: 780px;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -111,8 +95,6 @@
       box-shadow: var(--shadow-glow);
       animation: scaleIn 0.45s cubic-bezier(.16,1,.3,1) both;
     }
-
-    /* Tipo de pregunta */
     .question-type {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.7rem;
@@ -120,9 +102,7 @@
       text-transform: uppercase;
       color: var(--purple-core);
       margin-bottom: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
     }
     .question-type::before {
       content: '';
@@ -132,20 +112,12 @@
       background: var(--purple-core);
       animation: blink 1.5s ease infinite;
     }
-    @keyframes blink {
-      0%,100%{opacity:1} 50%{opacity:0.2}
-    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
-    /* Enunciado */
     .question-text {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.5;
-      margin-bottom: 1rem;
+      font-size: 1.25rem; font-weight: 600;
+      color: var(--text); line-height: 1.5; margin-bottom: 1rem;
     }
-
-    /* Fragmento de código */
     .code-fragment {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.95rem;
@@ -159,48 +131,32 @@
       letter-spacing: 0.03em;
     }
 
-    /* ── Opciones de respuesta ── */
+    /* ── Opciones ── */
     .options-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.9rem;
-      margin-top: 0.6rem;
+      gap: 0.9rem; margin-top: 0.6rem;
     }
-    /* Para preguntas con muchas opciones o de ordenar, usar 1 columna */
-    .options-grid.single-col {
-      grid-template-columns: 1fr;
-    }
+    .options-grid.single-col { grid-template-columns: 1fr; }
 
     .option-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
+      display: flex; align-items: center; gap: 0.9rem;
       padding: 1rem 1.2rem;
       background: rgba(124,58,237,0.08);
       border: 1px solid var(--border);
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.2s, border-color 0.2s, transform 0.15s;
-      text-align: left;
-      color: var(--text);
+      text-align: left; color: var(--text);
       font-family: 'Rajdhani', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      position: relative;
-      overflow: hidden;
+      font-size: 1rem; font-weight: 600; letter-spacing: 0.03em;
     }
     .option-btn .opt-letter {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.7rem;
+      font-family: 'Orbitron', sans-serif; font-size: 0.7rem;
       color: var(--purple-core);
-      min-width: 24px;
-      height: 24px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      min-width: 24px; height: 24px;
+      border: 1px solid var(--border); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       transition: background 0.2s, border-color 0.2s;
     }
@@ -210,184 +166,132 @@
       transform: translateY(-2px);
     }
     .option-btn:hover:not(:disabled) .opt-letter {
-      background: var(--purple-glow);
-      border-color: var(--purple-glow);
-      color: #fff;
+      background: var(--purple-glow); border-color: var(--purple-glow); color: #fff;
     }
     .option-btn:disabled { cursor: not-allowed; }
-
-    /* Estados: correcto / incorrecto */
-    .option-btn.correct {
-      background: rgba(74,222,128,0.15);
-      border-color: var(--green-ok);
-    }
-    .option-btn.correct .opt-letter {
-      background: var(--green-ok);
-      border-color: var(--green-ok);
-      color: #000;
-    }
-    .option-btn.wrong {
-      background: rgba(248,113,113,0.12);
-      border-color: var(--red-wrong);
-      opacity: 0.7;
-    }
-    .option-btn.wrong .opt-letter {
-      background: var(--red-wrong);
-      border-color: var(--red-wrong);
-      color: #000;
-    }
+    .option-btn.correct { background: rgba(74,222,128,0.15); border-color: var(--green-ok); }
+    .option-btn.correct .opt-letter { background: var(--green-ok); border-color: var(--green-ok); color:#000; }
+    .option-btn.wrong   { background: rgba(248,113,113,0.12); border-color: var(--red-wrong); opacity: 0.7; }
+    .option-btn.wrong .opt-letter   { background: var(--red-wrong); border-color: var(--red-wrong); color:#000; }
 
     /* ── Feedback ── */
     .feedback-box {
-      margin-top: 1.2rem;
-      padding: 0.85rem 1.2rem;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.03em;
-      display: none;
+      margin-top: 1.2rem; padding: 0.85rem 1.2rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+      letter-spacing: 0.03em; display: none;
       animation: fadeUp 0.3s ease both;
     }
     .feedback-box.show { display: block; }
-    .feedback-box.ok {
-      background: rgba(74,222,128,0.12);
-      border: 1px solid rgba(74,222,128,0.35);
-      color: var(--green-ok);
-    }
-    .feedback-box.fail {
-      background: rgba(248,113,113,0.1);
-      border: 1px solid rgba(248,113,113,0.3);
-      color: var(--red-wrong);
-    }
+    .feedback-box.ok   { background:rgba(74,222,128,0.12); border:1px solid rgba(74,222,128,0.35); color:var(--green-ok); }
+    .feedback-box.fail { background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.3); color:var(--red-wrong); }
 
-    /* ── Botón Siguiente ── */
+    /* ── Botón siguiente ── */
     .btn-next {
-      margin-top: 1.5rem;
-      display: none;
-      width: 100%;
+      margin-top: 1.5rem; display: none; width: 100%;
       padding: 0.9rem;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      background: transparent;
-      border: 1px solid var(--border-bright);
-      border-radius: 8px;
-      color: var(--text-dim);
-      cursor: pointer;
+      font-family: 'Orbitron', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em;
+      background: transparent; border: 1px solid var(--border-bright);
+      border-radius: 8px; color: var(--text-dim); cursor: pointer;
       transition: background 0.2s, color 0.2s;
     }
-    .btn-next.show { display: block; }
-    .btn-next:hover {
-      background: rgba(124,58,237,0.25);
-      color: var(--text);
-    }
+    .btn-next.show  { display: block; }
+    .btn-next:hover { background: rgba(124,58,237,0.25); color: var(--text); }
 
-    /* ══════════════════════
+    /* ── Timer ── */
+    .timer-circle {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--text);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .timer-circle.warning { border-color:#f97316; color:#f97316; animation:shake 0.4s ease infinite; }
+    .timer-circle.danger  { border-color:var(--red-wrong); color:var(--red-wrong); animation:shake 0.2s ease infinite; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-2px)} 75%{transform:translateX(2px)} }
+
+    /* ══════════════════════════════════
        PANTALLA DE RESULTADOS
-    ══════════════════════ */
+    ══════════════════════════════════ */
     .results-screen {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      padding: 3rem 2rem;
+      position: relative; z-index: 10;
+      width: 100%; max-width: 620px;
+      text-align: center; padding: 3rem 2rem;
       animation: scaleIn 0.6s cubic-bezier(.16,1,.3,1) both;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.8rem;
+      display: none; flex-direction: column; align-items: center; gap: 1.6rem;
     }
-    .results-screen.show {
-      display: flex;
-    }
+    .results-screen.show { display: flex; }
 
     .result-trophy {
       font-size: 4rem;
       filter: drop-shadow(0 0 24px gold);
       animation: bounce 1.2s ease-in-out infinite alternate;
     }
-    @keyframes bounce {
-      from { transform: translateY(0); }
-      to   { transform: translateY(-10px); }
-    }
+    @keyframes bounce { from{transform:translateY(0)} to{transform:translateY(-10px)} }
 
     .result-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
       background: linear-gradient(135deg, gold, #f97316);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
     .result-score-big {
       font-family: 'Orbitron', sans-serif;
       font-size: clamp(2.5rem, 8vw, 4rem);
       color: var(--accent);
       text-shadow: 0 0 30px rgba(232,121,249,0.6);
     }
-    .result-score-big span {
-      font-size: 0.45em;
-      color: var(--muted);
+    .result-score-big span { font-size: 0.42em; color: var(--muted); }
+    .result-stats { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .result-message { color: var(--text-dim); font-size: 1.05rem; max-width: 380px; line-height: 1.6; }
+
+    /* ── Grupo de botones de resultado ── */
+    .result-btn-group {
+      display: flex; flex-direction: column;
+      gap: 0.9rem; width: 100%; max-width: 360px;
     }
 
-    .result-stats {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      justify-content: center;
+    /* Siguiente nivel */
+    .btn-siguiente {
+      width: 100%; padding: 1rem;
+      font-family: 'Orbitron', sans-serif; font-size: 0.92rem;
+      font-weight: 700; letter-spacing: 0.12em; color: #fff;
+      background: linear-gradient(135deg, var(--btn-bg), var(--purple-glow));
+      border: none; border-radius: 8px; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 0 24px rgba(124,58,237,0.5);
     }
+    .btn-siguiente:not(:disabled):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 44px rgba(168,85,247,0.8);
+    }
+    .btn-siguiente:disabled { cursor: default; }
 
-    .result-message {
-      color: var(--text-dim);
-      font-size: 1.05rem;
-      max-width: 380px;
-      line-height: 1.6;
-    }
-
-    .btn-restart {
-      background: linear-gradient(135deg, #b45309, #d97706);
-      box-shadow: 0 0 24px rgba(217,119,6,0.4);
-    }
-    .btn-restart:hover {
-      box-shadow: 0 0 44px rgba(217,119,6,0.7);
-    }
-
-    /* ══════════════════════
-       TIMER
-    ══════════════════════ */
-    .timer-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .timer-circle {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      border: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.8rem;
-      color: var(--text);
-      transition: border-color 0.3s, color 0.3s;
+    /* Probar otro juego — decorativo */
+    .btn-otro-juego {
+      width: 100%; padding: 0.9rem;
+      font-family: 'Orbitron', sans-serif; font-size: 0.82rem;
+      letter-spacing: 0.1em; color: var(--muted);
+      background: transparent;
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 8px; cursor: not-allowed; opacity: 0.55;
       position: relative;
     }
-    .timer-circle.warning {
-      border-color: #f97316;
-      color: #f97316;
-      animation: shake 0.4s ease infinite;
+    .btn-otro-juego::after {
+      content: 'PRÓXIMAMENTE';
+      position: absolute; top: -9px; right: 10px;
+      font-size: 0.55rem; letter-spacing: 0.1em;
+      background: var(--bg-mid); color: var(--purple-core);
+      border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px;
     }
-    .timer-circle.danger {
-      border-color: var(--red-wrong);
-      color: var(--red-wrong);
-      animation: shake 0.2s ease infinite;
+
+    /* Volver al inicio */
+    .btn-home {
+      font-family: 'Rajdhani', sans-serif; font-size: 0.85rem;
+      color: var(--muted); background: transparent; border: none;
+      cursor: pointer; letter-spacing: 0.05em;
+      text-decoration: underline; text-underline-offset: 3px; padding: 0.3rem;
     }
-    @keyframes shake {
-      0%,100%{transform:translateX(0)} 25%{transform:translateX(-2px)} 75%{transform:translateX(2px)}
-    }
+    .btn-home:hover { color: var(--text-dim); }
   </style>
 </head>
 <body>
@@ -403,17 +307,17 @@
 
   <!-- ── HUD ── -->
   <header class="hud" id="hud">
-    <div class="hud-logo">⚔️ GITCHALLENGE</div>
+    <div class="hud-left">
+      <div class="hud-logo">⚔️ GITCHALLENGE</div>
+      <span id="nivel-label">NIVEL 1</span>   <!-- app.js actualiza esto -->
+    </div>
     <div class="hud-right">
-      <div class="score-display">
-        ★ <span class="score-val" id="score-val">0</span> pts
-      </div>
-      <div class="timer-wrap">
-        <div class="timer-circle" id="timer-circle">
-          <span id="timer-text">20</span>
-        </div>
-      </div>
+      <div class="score-display">★ <span class="score-val" id="score-val">0</span> pts</div>
+      <div class="timer-circle" id="timer-circle"><span id="timer-text">20</span></div>
       <div class="question-counter" id="q-counter">1 / 10</div>
+      <button class="btn-exit" onclick="window.location.href='index.html'">
+  ✖ Salir
+</button>
     </div>
   </header>
 
@@ -429,27 +333,36 @@
     <div class="code-fragment" id="q-code" style="display:none"></div>
     <div class="options-grid" id="options-grid"></div>
     <div class="feedback-box" id="feedback-box"></div>
-    <button class="btn-next" id="btn-next" onclick="nextQuestion()">
-      SIGUIENTE PREGUNTA →
-    </button>
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()">SIGUIENTE PREGUNTA →</button>
   </section>
 
   <!-- ── Pantalla de resultados ── -->
   <section class="results-screen" id="results-screen">
+
     <div class="result-trophy" id="result-trophy">🏆</div>
     <h2 class="result-title" id="result-title">¡Desafío Completado!</h2>
-    <div class="result-score-big" id="result-score">
-      0 <span>/ 115 pts</span>
-    </div>
+
+    <div class="result-score-big" id="result-score">0 <span>/ 0 pts</span></div>
+
     <div class="result-stats" id="result-stats"></div>
     <p class="result-message" id="result-message"></p>
-    <a href="index.html" class="btn-primary btn-restart">↩ Volver al inicio</a>
+
+    <div class="result-btn-group" id="result-btn-group">
+
+      <!-- app.js activa este botón si nivel{N+1}.json existe -->
+      <button class="btn-siguiente" id="btn-siguiente-nivel" disabled>Cargando...</button>
+
+      <!-- Solo decorativo, sin funcionalidad -->
+      <button class="btn-otro-juego" disabled>🎮 &nbsp;Probar otro juego</button>
+
+      <!-- Siempre disponible -->
+      <button class="btn-home" onclick="window.location.href='index.html'">↩ Volver al inicio</button>
+
+    </div>
   </section>
 
-  <!-- app.js maneja toda la lógica -->
   <script src="app.js"></script>
   <script>
-    // Partículas de fondo
     const container = document.getElementById('particles');
     for (let i = 0; i < 25; i++) {
       const p = document.createElement('div');
