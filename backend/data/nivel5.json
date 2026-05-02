@@ -1,0 +1,152 @@
+{
+  "_instruccion_general": "Copia este archivo para crear nuevos niveles. No borres las claves con '_', son para guiar al equipo.",
+  "id": 5,
+  "modulo_id": "m2",
+  "titulo": "Ramas (Branching)",
+  "configuracion": {
+    "puntos_minimos_aprobar": 75,
+    "_instruccion_config": "Define cuántos puntos necesita el usuario para desbloquear el siguiente nivel."
+  },
+  "contenido_wiki": {
+    "_instruccion_wiki": "Escribe toda la teoría aquí usando formato Markdown. Usa \\n para los saltos de línea.",
+    "cuerpo_markdown": "# Módulo 2: El poder de Git\\n\\n## ¿Qué es una rama?\\nEn Git, una rama es un puntero móvil que apunta a un commit específico. Por defecto, Git usa la rama `main`.\\n\\n## Comandos Esenciales\\n- `git branch`: Lista las ramas.\\n- `git branch <nombre>`: Crea una rama.\\n- `git switch <nombre>`: Cambia de contexto a la rama seleccionada."
+  },
+  "preguntas": [
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué es una rama en Git?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Un puntero ligero y móvil hacia un commit específico.",
+          "es_correcta": true,
+          "feedback": "¡Exacto! Las ramas son referencias que apuntan al último trabajo realizado en una línea de tiempo."
+        },
+        {
+          "texto": "Una copia completa de todos los archivos en una carpeta oculta.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Git no duplica archivos físicamente al crear ramas; usa punteros para ser eficiente."
+        }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q2",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Cuál es la rama principal que Git crea por defecto?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "main (o master)",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Tradicionalmente era 'master', pero actualmente la mayoría de plataformas usan 'main'."
+        },
+        {
+          "texto": "root",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. 'root' no es el nombre estándar de la rama principal en Git."
+        }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "¿Qué comando falta para crear una nueva rama llamada 'feature-login'?",
+      "fragmento_codigo": "git [....] feature-login",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "branch", "es_correcta": true, "feedback": "¡Correcto! 'git branch' crea la rama pero no te mueve a ella." },
+        { "texto": "checkout", "es_correcta": false, "feedback": "INCORRECTO. Checkout se usa para cambiar, no para crear (a menos que uses -b)." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q4",
+      "tipo": "completar",
+      "enunciado": "Para cambiar tu contexto de trabajo a la rama 'develop', el comando es:",
+      "fragmento_codigo": "git [....] develop",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "switch", "es_correcta": true, "feedback": "¡Exacto! 'git switch' es el comando moderno y seguro para cambiar de rama." },
+        { "texto": "remote", "es_correcta": false, "feedback": "INCORRECTO. 'remote' se usa para conexiones con servidores externos." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q5",
+      "tipo": "ordenar",
+      "enunciado": "Ordena los comandos necesarios para crear una rama y empezar a trabajar en ella:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "git branch feature-test",
+        "git switch feature-test",
+        "touch archivo.txt",
+        "git add archivo.txt",
+        "git commit -m 'primer commit'"
+      ],
+      "feedback": "¡Perfecto! Primero creas la rama, luego te mueves a ella y finalmente realizas el ciclo de vida del commit."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q6",
+      "tipo": "ordenar",
+      "enunciado": "Ordena el flujo para integrar cambios de una rama a otra localmente:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "git switch main",
+        "git merge feature-test",
+        "git branch -d feature-test"
+      ],
+      "feedback": "¡Excelente! Siempre debes volver a la rama receptora (main) antes de fusionar y borrar la rama temporal."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q7",
+      "tipo": "verdadero_falso",
+      "enunciado": "Si borras una rama local con 'git branch -d', la rama también se borra automáticamente en GitHub.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Los cambios locales no afectan al servidor a menos que uses un comando de 'push'." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Correcto! Debes borrarla en el remoto explícitamente si deseas que desaparezca de GitHub." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q8",
+      "tipo": "verdadero_falso",
+      "enunciado": "Es posible tener dos ramas con el mismo nombre en un mismo repositorio local.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Git requiere que cada rama tenga un nombre único para poder identificarlas." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Exacto! Los nombres de las ramas actúan como identificadores únicos." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q9",
+      "tipo": "deteccion_error",
+      "enunciado": "Un estudiante intenta borrar la rama donde está parado actualmente y recibe un error. ¿Por qué sucede esto?",
+      "comando_ejecutado": "git branch -d feature-actual",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "No puedes eliminar la rama activa (HEAD). Debes cambiar a otra rama primero.", "es_correcta": true, "feedback": "¡Correcto! Es como intentar quitar el piso donde estás parado." },
+        { "texto": "El comando correcto es 'git delete'.", "es_correcta": false, "feedback": "INCORRECTO. El comando es correcto, el problema es la posición del usuario." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q10",
+      "tipo": "deteccion_error",
+      "enunciado": "¿Qué error hay en este comando para crear y cambiar de rama simultáneamente?",
+      "comando_ejecutado": "git switch feature-new",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "Falta la bandera '-c' (o -b en checkout) para indicar que la rama es nueva.", "es_correcta": true, "feedback": "¡Exacto! Sin -c, Git busca una rama que ya exista." },
+        { "texto": "El nombre de la rama no puede llevar guiones.", "es_correcta": false, "feedback": "INCORRECTO. Los guiones son caracteres válidos y recomendados en nombres de ramas." }
+      ]
+    }
+  ]
+}
