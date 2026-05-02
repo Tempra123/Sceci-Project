@@ -99,6 +99,28 @@
         "git push (subir la versión limpia)"
       ],
       "feedback": "¡Excelente! Resolver conflictos en tu propia PC antes de subir los cambios es una regla de oro en el desarrollo."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q7",
+      "tipo": "verdadero_falso",
+      "enunciado": "Si ocurre un conflicto de fusión, Git borrará automáticamente las líneas de código que causaron el problema.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Git nunca borra tu código; se detiene y marca las diferencias para que tú decidas qué conservar." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Correcto! Git preserva ambas versiones dentro del archivo usando marcadores especiales hasta que tú lo resuelvas." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q8",
+      "tipo": "verdadero_falso",
+      "enunciado": "Es posible tener un conflicto de fusión incluso si los desarrolladores trabajaron en archivos diferentes.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Los conflictos de contenido solo ocurren cuando se modifica el mismo archivo en las mismas líneas." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Exacto! Si los cambios son en archivos distintos, Git puede fusionarlos automáticamente sin problemas." }
+      ]
     }
   ]
 }
