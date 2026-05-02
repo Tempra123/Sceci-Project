@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitChallenge ⚔️</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Estilos exclusivos del Home ── */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero centrado */
+    .hero {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.2rem;
+      text-align: center;
+      padding: 3rem 4rem;
+      animation: fadeUp 0.9s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    /* Ícono espadas */
+    .swords {
+      font-size: 3.5rem;
+      filter: drop-shadow(0 0 20px #a855f7);
+      animation: pulse-icon 2.8s ease-in-out infinite;
+    }
+    @keyframes pulse-icon {
+      0%, 100% { transform: scale(1) rotate(-4deg); filter: drop-shadow(0 0 18px #a855f7); }
+      50%       { transform: scale(1.12) rotate(4deg); filter: drop-shadow(0 0 36px #e879f9); }
+    }
+
+    /* Título principal */
+    .title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 7vw, 3.8rem);
+      letter-spacing: 0.08em;
+      line-height: 1;
+      background: linear-gradient(135deg, #e879f9 0%, #a855f7 45%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+    }
+
+    /* Glitch layers */
+    .title::before,
+    .title::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #e879f9 0%, #a855f7 45%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .title::before {
+      animation: glitch-1 5s infinite;
+      clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    }
+    .title::after {
+      animation: glitch-2 5s infinite;
+      clip-path: polygon(0 65%, 100% 65%, 100% 80%, 0 80%);
+    }
+    @keyframes glitch-1 {
+      0%,88%,100% { transform: none; opacity: 0; }
+      90%          { transform: translateX(-4px); opacity: 0.7; }
+      92%          { transform: translateX(4px);  opacity: 0.5; }
+      94%          { transform: none; opacity: 0; }
+    }
+    @keyframes glitch-2 {
+      0%,91%,100% { transform: none; opacity: 0; }
+      93%          { transform: translateX(5px); opacity: 0.6; }
+      95%          { transform: translateX(-2px); opacity: 0.8; }
+      97%          { transform: none; opacity: 0; }
+    }
+
+    /* Tagline */
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .tagline span { color: var(--accent); }
+
+    /* Badges de estadísticas */
+    .stats {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Botón de inicio con animación de pulso */
+    .btn-iniciar {
+      animation: btn-pulse 3s ease-in-out infinite;
+    }
+    @keyframes btn-pulse {
+      0%, 100% { box-shadow: 0 0 24px rgba(124,58,237,0.55), inset 0 1px 0 rgba(255,255,255,0.12); }
+      50%       { box-shadow: 0 0 50px rgba(168,85,247,0.85), inset 0 1px 0 rgba(255,255,255,0.12); }
+    }
+
+    /* Hint inferior */
+    .hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      opacity: 0.65;
+    }
+
+    /* Versión / nivel */
+    .nivel-tag {
+      position: fixed;
+      bottom: 1.4rem;
+      right: 1.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      z-index: 20;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Fondo ── -->
+  <div class="bg-layer">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- ── Contenido principal ── -->
+  <main class="hero">
+
+    <div class="swords">⚔️</div>
+
+    <h1 class="title" data-text="GITCHALLENGE">GITCHALLENGE</h1>
+
+    <p class="tagline">Pon a prueba tu conocimiento de <span>Git</span></p>
+
+    <div class="divider"></div>
+
+    <!-- Estadísticas del nivel -->
+    <div class="stats">
+      <div class="badge"><strong>10</strong>&nbsp; Preguntas</div>
+      <div class="badge"><strong>5</strong>&nbsp; Tipos de desafío</div>
+      <div class="badge"><strong>115</strong>&nbsp; Puntos en juego</div>
+    </div>
+
+    <!-- Botón principal → redirige a game.html -->
+    <a href="game.html" class="btn-primary btn-iniciar">
+      ▶ &nbsp; Iniciar
+    </a>
+
+    <p class="hint">Selecciona la respuesta correcta antes de que se acabe el tiempo</p>
+
+  </main>
+
+  <span class="nivel-tag">NIVEL 1 · BÁSICO</span>
+
+  <script>
+    // Genera partículas flotantes
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left            = Math.random() * 100 + 'vw';
+      p.style.width           = p.style.height = (Math.random() * 3 + 2) + 'px';
+      p.style.animationDuration = (Math.random() * 12 + 8) + 's';
+      p.style.animationDelay  = (Math.random() * 10) + 's';
+      container.appendChild(p);
+    }
+  </script>
+</body>
+</html>
