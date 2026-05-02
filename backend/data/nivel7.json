@@ -71,6 +71,34 @@
         { "texto": "abort", "es_correcta": true, "feedback": "¡Exacto! El parámetro '--abort' detiene el proceso de merge y deja todo como estaba antes." },
         { "texto": "cancel", "es_correcta": false, "feedback": "INCORRECTO. El término correcto que reconoce Git para interrumpir la fusión es 'abort'." }
       ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q5",
+      "tipo": "ordenar",
+      "enunciado": "Ordena el flujo de trabajo correcto cuando Git te notifica un conflicto de fusión:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "Abrir el archivo afectado en un editor",
+        "Elegir el código final y borrar marcadores (<<<<, ====, >>>>)",
+        "git add <archivo>",
+        "git commit -m 'resolve conflict'"
+      ],
+      "feedback": "¡Muy bien! Ese es el camino seguro para limpiar un conflicto y seguir adelante."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q6",
+      "tipo": "ordenar",
+      "enunciado": "Ordena de mayor a menor jerarquía los pasos para integrar tu rama evitando conflictos en el servidor:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "git pull (actualizar rama local)",
+        "Resolver conflictos localmente (si existen)",
+        "Verificar que el código compile y funcione",
+        "git push (subir la versión limpia)"
+      ],
+      "feedback": "¡Excelente! Resolver conflictos en tu propia PC antes de subir los cambios es una regla de oro en el desarrollo."
     }
   ]
 }
