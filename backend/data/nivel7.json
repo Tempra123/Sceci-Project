@@ -121,6 +121,28 @@
         { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Los conflictos de contenido solo ocurren cuando se modifica el mismo archivo en las mismas líneas." },
         { "texto": "Falso", "es_correcta": true, "feedback": "¡Exacto! Si los cambios son en archivos distintos, Git puede fusionarlos automáticamente sin problemas." }
       ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q9",
+      "tipo": "deteccion_error",
+      "enunciado": "Un desarrollador termina de editar un archivo en conflicto, pero olvida borrar las líneas '<<<<<<< HEAD' y '=======', y luego hace el commit. ¿Qué sucederá?",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "Esas líneas se guardarán como parte del código fuente, provocando errores de compilación.", "es_correcta": true, "feedback": "¡Exacto! Git trata esas líneas como texto normal, por lo que romperán tu código si no las eliminas." },
+        { "texto": "Git las borrará automáticamente al detectar que son marcadores de conflicto.", "es_correcta": false, "feedback": "INCORRECTO. Git confía en que tú limpiaste el archivo antes de hacer el 'add' y el 'commit'." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q10",
+      "tipo": "deteccion_error",
+      "enunciado": "Durante un conflicto, el usuario ejecuta 'git commit' directamente después de editar los archivos, sin usar 'git add'. ¿Por qué falla?",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "Porque Git necesita que uses 'add' para confirmar que el archivo ya está resuelto y listo.", "es_correcta": true, "feedback": "¡Correcto! El comando 'add' actúa como el verificador de que la resolución ha terminado." },
+        { "texto": "Porque no se pueden hacer commits durante un conflicto bajo ninguna circunstancia.", "es_correcta": false, "feedback": "INCORRECTO. Sí se puede, pero el flujo obligatorio es siempre: resolver -> add -> commit." }
+      ]
     }
   ]
 }
