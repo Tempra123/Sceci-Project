@@ -71,6 +71,34 @@
         { "texto": "pull", "es_correcta": true, "feedback": "¡Exacto! Hacer un pull antes del merge evita conflictos con versiones antiguas." },
         { "texto": "push", "es_correcta": false, "feedback": "INCORRECTO. El push es para subir cambios, no para preparar una fusión." }
       ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q5",
+      "tipo": "ordenar",
+      "enunciado": "Ordena los pasos para fusionar una rama de funcionalidad en la rama principal:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "git switch main",
+        "git pull origin main",
+        "git merge feature-name",
+        "git push origin main"
+      ],
+      "feedback": "¡Excelente! Siempre asegúrate de estar en la rama destino y tenerla actualizada antes de fusionar."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q6",
+      "tipo": "ordenar",
+      "enunciado": "Ordena el proceso para resolver un conflicto de fusión:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "Identificar los archivos con conflictos",
+        "Editar los archivos para elegir el código final",
+        "git add (Marcar como resuelto)",
+        "git commit (Finalizar la fusión)"
+      ],
+      "feedback": "¡Perfecto! Una vez que resuelves el código manualmente, debes avisar a Git con un commit."
     }
   ]
 }
