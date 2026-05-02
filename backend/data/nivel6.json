@@ -1,0 +1,54 @@
+{
+  "_instruccion_general": "Nivel 6: Fusión de Ramas (Merging).",
+  "id": 6,
+  "modulo_id": "m2",
+  "titulo": "Fusión (Merging)",
+  "configuracion": {
+    "puntos_minimos_aprobar": 80,
+    "_instruccion_config": "Puntaje necesario para dominar la integración de código."
+  },
+  "contenido_wiki": {
+    "_instruccion_wiki": "Teoría sobre cómo unir el trabajo de diferentes ramas.",
+    "cuerpo_markdown": "# Módulo 2: Uniendo Caminos (Merge)\\n\\n## ¿Qué es el Merging?\\nEs el proceso de integrar las líneas de tiempo de dos ramas diferentes en una sola. Normalmente se fusionan ramas de características (`feature`) hacia la rama principal (`main` o `develop`).\\n\\n## Tipos de Merge\\n1. **Fast-forward**: Cuando la rama receptora no tiene cambios nuevos, Git solo mueve el puntero hacia adelante.\\n2. **Three-way Merge**: Cuando ambas ramas han avanzado y Git crea un nuevo 'merge commit' para unirlas."
+  },
+  "preguntas": [
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué sucede durante un 'Fast-forward merge'?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Git simplemente mueve el puntero de la rama actual hacia el último commit de la rama integrada.",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Ocurre cuando no hay conflictos ni caminos separados."
+        },
+        {
+          "texto": "Git crea un nuevo commit de fusión obligatoriamente.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Eso sucede en un 'Three-way merge', no en un Fast-forward."
+        }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q2",
+      "tipo": "opcion_multiple",
+      "enunciado": "Para fusionar la rama 'feature-1' en 'main', ¿en qué rama debes estar posicionado?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "En la rama receptora (main).",
+          "es_correcta": true,
+          "feedback": "¡Exacto! Siempre debes estar parado en la rama que va a recibir los cambios."
+        },
+        {
+          "texto": "En la rama que quieres fusionar (feature-1).",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Si estás en feature-1 y haces merge, intentarías traer cambios de otra rama hacia ella."
+        }
+      ]
+    }
+  ]
+}
