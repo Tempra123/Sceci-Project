@@ -99,6 +99,28 @@
         "git commit (Finalizar la fusión)"
       ],
       "feedback": "¡Perfecto! Una vez que resuelves el código manualmente, debes avisar a Git con un commit."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q7",
+      "tipo": "verdadero_falso",
+      "enunciado": "Al hacer un merge, Git borra automáticamente la rama que fue fusionada.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. La rama sigue existiendo; si ya no la necesitas, debes borrarla manualmente con 'git branch -d'." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Exacto! Git mantiene la rama original intacta después de la fusión." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q8",
+      "tipo": "verdadero_falso",
+      "enunciado": "Un 'Merge Conflict' solo puede ser resuelto por Git de forma automática.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Un conflicto requiere que un humano revise el código y decida qué versión conservar." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Correcto! La intervención manual es obligatoria cuando Git encuentra cambios contradictorios." }
+      ]
     }
   ]
 }
