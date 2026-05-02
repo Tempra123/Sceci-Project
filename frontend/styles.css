@@ -1,0 +1,227 @@
+/* ═══════════════════════════════════════════
+   GITCHALLENGE — styles.css
+   Estilos compartidos entre index.html y game.html
+   ═══════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* ── Variables globales ── */
+:root {
+  --bg-deep:      #0d0a1a;
+  --bg-mid:       #140f2a;
+  --bg-card:      rgba(20, 15, 42, 0.85);
+  --purple-glow:  #7c3aed;
+  --purple-core:  #a855f7;
+  --accent:       #e879f9;
+  --accent-cyan:  #22d3ee;
+  --green-ok:     #4ade80;
+  --red-wrong:    #f87171;
+  --text:         #ede9fe;
+  --text-dim:     #c4b5fd;
+  --muted:        #7c6fa0;
+  --btn-bg:       #5b21b6;
+  --btn-hover:    #7c3aed;
+  --border:       rgba(168, 85, 247, 0.25);
+  --border-bright:rgba(168, 85, 247, 0.6);
+  --shadow-glow:  0 0 30px rgba(124, 58, 237, 0.4);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  background: var(--bg-deep);
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════
+   FONDO ANIMADO (compartido)
+══════════════════════════════════ */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.3;
+  animation: drift 14s ease-in-out infinite alternate;
+}
+.blob-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #7c3aed, transparent 70%);
+  top: -140px; left: -100px;
+  animation-delay: 0s;
+}
+.blob-2 {
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, #a21caf, transparent 70%);
+  bottom: -80px; right: -60px;
+  animation-delay: -6s;
+}
+.blob-3 {
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, #4f46e5, transparent 70%);
+  top: 40%; left: 60%;
+  animation-delay: -10s;
+}
+
+@keyframes drift {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(28px, 18px) scale(1.1); }
+}
+
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.particles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.particle {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--purple-core);
+  opacity: 0;
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0%   { transform: translateY(110vh) scale(0); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.2; }
+  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+/* ══════════════════════════════════
+   TIPOGRAFÍA COMPARTIDA
+══════════════════════════════════ */
+.font-display { font-family: 'Orbitron', sans-serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+/* ══════════════════════════════════
+   BOTÓN PRINCIPAL
+══════════════════════════════════ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 3rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--btn-bg), var(--purple-glow));
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.25s ease;
+  box-shadow: 0 0 24px rgba(124,58,237,0.55),
+              inset 0 1px 0 rgba(255,255,255,0.12);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 3s ease-in-out infinite;
+}
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 55px rgba(168,85,247,0.85),
+              inset 0 1px 0 rgba(255,255,255,0.18);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:active { transform: translateY(0) scale(0.98); }
+
+@keyframes shimmer {
+  0%       { left: -100%; }
+  50%, 100%{ left: 160%; }
+}
+
+/* ══════════════════════════════════
+   BADGE / CHIP
+══════════════════════════════════ */
+.badge {
+  background: rgba(124,58,237,0.15);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--purple-core);
+  font-weight: 600;
+}
+.badge strong {
+  color: var(--accent);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+}
+
+/* ══════════════════════════════════
+   DIVISOR
+══════════════════════════════════ */
+.divider {
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple-glow), transparent);
+}
+
+/* ══════════════════════════════════
+   ANIMACIONES DE ENTRADA
+══════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.anim-fadeup  { animation: fadeUp  0.7s cubic-bezier(.16,1,.3,1) both; }
+.anim-fadein  { animation: fadeIn  0.5s ease both; }
+.anim-scalein { animation: scaleIn 0.5s cubic-bezier(.16,1,.3,1) both; }
