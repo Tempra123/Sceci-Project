@@ -1,0 +1,52 @@
+{
+  "_instruccion_general": "Nivel 7: Gestión de Conflictos (Conflict Resolution).",
+  "id": 7,
+  "modulo_id": "m2",
+  "titulo": "Gestión de Conflictos",
+  "configuracion": {
+    "puntos_minimos_aprobar": 80
+  },
+  "contenido_wiki": {
+    "cuerpo_markdown": "# Módulo 2: Resolución de Conflictos\\n\\n## ¿Por qué ocurre un conflicto?\\nUn conflicto de fusión sucede cuando Git intenta unir dos ramas que han modificado **la misma línea** de un mismo archivo con contenidos distintos. Git no sabe cuál de las dos versiones es la correcta y se detiene para que tú decidas.\\n\\n## Marcadores de Conflicto\\nCuando abres un archivo con conflicto, verás estos símbolos:\\n- `<<<<<<< HEAD`: Indica tus cambios actuales.\\n- `=======`: Es la línea divisoria.\\n- `>>>>>>> branch-name`: Indica los cambios que vienen de la otra rama."
+  },
+  "preguntas": [
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué símbolo utiliza Git para indicar el inicio de tus cambios locales durante un conflicto?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "<<<<<<< HEAD",
+          "es_correcta": true,
+          "feedback": "¡Correcto! HEAD representa tu posición actual y los cambios que ya tenías en tu rama."
+        },
+        {
+          "texto": ">>>>>>> branch-name",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Esos símbolos indican el final de los cambios que vienen de la rama externa."
+        }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q2",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué debe hacer un programador cuando Git marca un conflicto de fusión?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Editar el archivo manualmente para elegir el código final y borrar los marcadores de Git.",
+          "es_correcta": true,
+          "feedback": "¡Exacto! El programador debe decidir qué código prevalece."
+        },
+        {
+          "texto": "Esperar a que Git elija la mejor opción automáticamente después de 24 horas.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Git nunca resolverá un conflicto de contenido por sí solo; requiere intervención humana."
+        }
+      ]
+    }
+  ]
+}
