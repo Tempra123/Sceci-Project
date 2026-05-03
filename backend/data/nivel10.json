@@ -7,4 +7,9 @@
   
   "configuracion": {
     "puntos_minimos_aprobar": 70
+  },
+  "contenido_wiki": {
+    "_instruccion_wiki": "Usa formato Markdown. Usa \\n para los saltos de línea y escapa las comillas dobles si es necesario.",
+    "cuerpo_markdown": "# Sincronización de Datos\n\nUna vez que tienes tu repositorio local conectado a un remoto (como GitHub), necesitas mover la información entre ambos para trabajar en equipo.\n\n## 1. Subir cambios (`git push`)\nEnvía tus commits locales al servidor.\n- `git push origin main`: Sube la rama 'main' al remoto llamado 'origin'.\n- `git push -u origin main`: Sube la rama y la vincula (tracking) para que en el futuro la terminal sepa a dónde empujar y solo necesites escribir `git push`.\n\n## 2. Descargar cambios con seguridad (`git fetch`)\nDescarga la información nueva del servidor a tu computadora, pero **no toca ni modifica** tus archivos de trabajo actuales. Es como 'mirar antes de cruzar la calle' para ver qué han programado tus compañeros antes de mezclarlo con tu código.\n\n## 3. Descargar y fusionar (`git pull`)\nEs literalmente la combinación automática de dos comandos: `git fetch` seguido de un `git merge`. Descarga los cambios e intenta mezclarlos inmediatamente con tu código actual. Es el comando más usado, pero si tú y un compañero editaron la misma línea del mismo archivo, Git detendrá el proceso y te avisará que hay un **conflicto de fusión**."
   }
+}
