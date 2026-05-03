@@ -197,17 +197,76 @@
     .btn-next.show  { display: block; }
     .btn-next:hover { background: rgba(124,58,237,0.25); color: var(--text); }
 
-    /* ── Timer ── */
-    .timer-circle {
-      width: 38px; height: 38px; border-radius: 50%;
-      border: 2px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--text);
-      transition: border-color 0.3s, color 0.3s;
+    /* ── Timer con SVG circular ── */
+    .timer-wrapper {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .timer-circle.warning { border-color:#f97316; color:#f97316; animation:shake 0.4s ease infinite; }
-    .timer-circle.danger  { border-color:var(--red-wrong); color:var(--red-wrong); animation:shake 0.2s ease infinite; }
-    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-2px)} 75%{transform:translateX(2px)} }
+
+    .timer-circle {
+      width: 48px;
+      height: 48px;
+      transform: rotate(-90deg);
+      filter: drop-shadow(0 0 12px rgba(124,58,237,0.4));
+      transition: filter 0.3s ease;
+    }
+
+    .timer-circle .timer-bg {
+      fill: none;
+      stroke: rgba(124,58,237,0.1);
+      stroke-width: 3;
+    }
+
+    .timer-circle .timer-progress {
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 282.7; /* 2 * π * 45 */
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.3s ease, filter 0.3s ease;
+    }
+
+    .timer-text {
+      position: absolute;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    /* ── Estados del timer ── */
+    .timer-wrapper.warning .timer-text {
+      color: #f97316;
+      text-shadow: 0 0 12px rgba(249,115,22,0.6);
+      animation: pulse-timer 0.6s ease infinite;
+    }
+
+    .timer-wrapper.danger .timer-text {
+      color: var(--red-wrong);
+      text-shadow: 0 0 16px rgba(248,113,113,0.8);
+      animation: pulse-timer 0.3s ease infinite;
+    }
+
+    @keyframes pulse-timer {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Gradientes de colores según estado */
+    .timer-wrapper.safe #timerGradient .timer-color-stop:nth-child(1) { stop-color: #4ade80; }
+    .timer-wrapper.safe #timerGradient .timer-color-stop:nth-child(2) { stop-color: #22c55e; }
+
+    .timer-wrapper.warning #timerGradient .timer-color-stop:nth-child(1) { stop-color: #facc15; }
+    .timer-wrapper.warning #timerGradient .timer-color-stop:nth-child(2) { stop-color: #f97316; }
+
+    .timer-wrapper.danger #timerGradient .timer-color-stop:nth-child(1) { stop-color: #f97316; }
+    .timer-wrapper.danger #timerGradient .timer-color-stop:nth-child(2) { stop-color: #dc2626; }
 
     /* ══════════════════════════════════
        PANTALLA DE RESULTADOS
@@ -313,7 +372,19 @@
     </div>
     <div class="hud-right">
       <div class="score-display">★ <span class="score-val" id="score-val">0</span> pts</div>
-      <div class="timer-circle" id="timer-circle"><span id="timer-text">20</span></div>
+      <div class="timer-wrapper" id="timer-wrapper">
+        <svg class="timer-circle" id="timer-svg" viewBox="0 0 100 100" width="48" height="48">
+          <defs>
+            <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" class="timer-color-stop"></stop>
+              <stop offset="100%" class="timer-color-stop"></stop>
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="45" class="timer-bg"></circle>
+          <circle cx="50" cy="50" r="45" class="timer-progress" style="stroke: url(#timerGradient)"></circle>
+        </svg>
+        <span id="timer-text" class="timer-text">20</span>
+      </div>
       <div class="question-counter" id="q-counter">1 / 10</div>
       <button class="btn-exit" onclick="window.location.href='index.html'">
   ✖ Salir

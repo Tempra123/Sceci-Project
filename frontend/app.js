@@ -42,7 +42,9 @@ const dom = {
   btnNext:        document.getElementById('btn-next'),
   scoreVal:       document.getElementById('score-val'),
   timerText:      document.getElementById('timer-text'),
-  timerCircle:    document.getElementById('timer-circle'),
+  timerWrapper:   document.getElementById('timer-wrapper'),
+  timerSvg:       document.getElementById('timer-svg'),
+  timerProgress:  document.querySelector('.timer-progress'),
   qCounter:       document.getElementById('q-counter'),
   progressFill:   document.getElementById('progress-fill'),
   questionCard:   document.getElementById('question-card'),
@@ -239,20 +241,38 @@ function nextQuestion() {
 }
 
 /* ════════════════════════════════════════════
-   TEMPORIZADOR
+   TEMPORIZADOR CON SVG CIRCULAR
 ════════════════════════════════════════════ */
 function iniciarTimer() {
   state.tiempoRestante   = CONFIG.segundosPorPregunta;
   dom.timerText.textContent = state.tiempoRestante;
-  dom.timerCircle.className = 'timer-circle';
+  
+  // Reinicia SVG
+  dom.timerWrapper.className = 'timer-wrapper safe';
+  dom.timerProgress.style.strokeDashoffset = 0;
+  
   clearInterval(state.timer);
 
   state.timer = setInterval(() => {
     state.tiempoRestante--;
     dom.timerText.textContent = state.tiempoRestante;
 
-    if      (state.tiempoRestante <= 5)  dom.timerCircle.className = 'timer-circle danger';
-    else if (state.tiempoRestante <= 10) dom.timerCircle.className = 'timer-circle warning';
+    // Calcula el progreso (0 a 1)
+    const progreso = state.tiempoRestante / CONFIG.segundosPorPregunta;
+    const circumferencia = 282.7; // 2*π*45
+    const offset = circumferencia * (1 - progreso);
+    dom.timerProgress.style.strokeDashoffset = offset;
+
+    // Cambia estado visual según tiempo
+    if      (state.tiempoRestante <= 5) {
+      dom.timerWrapper.className = 'timer-wrapper danger';
+    }
+    else if (state.tiempoRestante <= 10) {
+      dom.timerWrapper.className = 'timer-wrapper warning';
+    }
+    else {
+      dom.timerWrapper.className = 'timer-wrapper safe';
+    }
 
     if (state.tiempoRestante <= 0) {
       detenerTimer();
