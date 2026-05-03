@@ -17,3 +17,34 @@ El proyecto busca apoyar y fortalecer el conocimiento en git elaborando una espe
 ## Instalar dependencias
 
 Antes de correrlo, asegúrate de estar en la terminal (dentro de tu entorno virtual si estás usando uno) e instala Flask y la librería de CORS:
+
+## 🎮 Cómo Jugar
+
+1. Abre `frontend/index.html` con Live Server
+2. Selecciona un nivel
+3. Responde las preguntas antes de que se acabe el tiempo (20 segundos)
+4. Gana puntos y sube de nivel
+5. Ve tu puntuación final con badges
+
+## ✨ Características Implementadas
+
+✅ **6 Niveles progresivos** - Básico a Desafío
+✅ **5 Tipos de preguntas** - Opción múltiple, completar, V/F, ordenar, encontrar error
+✅ **Timer circular animado** - Barra visual con cambios verde→rojo
+✅ **Preguntas aleatorias** - Shuffle Fisher-Yates en cada partida
+✅ **Sistema de puntos** - Gana puntos por respuestas correctas
+✅ **Pantalla de resultados** - Badges según desempeño
+✅ **Selector de niveles** - Interfaz para elegir qué nivel jugar
+
+## 📱 Responsive
+
+- Mobile (360px+)
+- Tablet (768px+)
+- Desktop (1024px+)
+
+## 🚀 Tecnologías
+
+- HTML5, CSS3, JavaScript Vanilla
+- SVG para timer circular
+- Animaciones CSS y transformaciones
+- JSON para datos de preguntas
