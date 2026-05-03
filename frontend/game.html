@@ -352,8 +352,12 @@
       <!-- app.js activa este botón si nivel{N+1}.json existe -->
       <button class="btn-siguiente" id="btn-siguiente-nivel" disabled>Cargando...</button>
 
-      <!-- Solo decorativo, sin funcionalidad -->
-      <button class="btn-otro-juego" disabled>🎮 &nbsp;Probar otro juego</button>
+     
+      <button class="btn-otro-juego" 
+  style="cursor:pointer; opacity:1;"
+  onclick="window.location.href='game2.html?nivel=' + (new URLSearchParams(window.location.search).get('nivel') || 1)">
+  🎮 &nbsp;Ahorcado Git
+</button>
 
       <!-- Siempre disponible -->
       <button class="btn-home" onclick="window.location.href='index.html'">↩ Volver al inicio</button>
