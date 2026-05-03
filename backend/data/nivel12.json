@@ -100,5 +100,79 @@
           "feedback": "INCORRECTO. Aunque es excelente para Markdown, también procesa páginas web completas."
         }
       ]
+    },
+    {
+      "id": "q6",
+      "tipo": "ordenar",
+      "enunciado": "Tienes tu proyecto web listo. Ordena los pasos para publicarlo en internet usando GitHub Pages:",
+      "puntos": 15,
+      "orden_correcto": [
+        "1. Hacer `git push` de tu código terminado a tu repositorio en GitHub",
+        "2. Ir a la pestaña 'Settings' (Configuraciones) de tu repositorio",
+        "3. Buscar la sección 'Pages' en la barra lateral izquierda",
+        "4. Seleccionar la rama 'main' (u otra) como la fuente (Source) y guardar",
+        "5. Esperar unos minutos a que GitHub te genere el enlace público"
+      ],
+      "feedback_correcto": "¡Perfecto! Así es como pasas de tener código local a tener un enlace funcional para mostrarle al mundo.",
+      "feedback_incorrecto": "INCORRECTO. Debes subir el código primero, luego ir a Settings, buscar Pages, elegir la rama fuente y esperar el despliegue."
+    },
+    {
+      "id": "q7",
+      "tipo": "completar",
+      "enunciado": "¿Cómo se le llama a la herramienta integrada de GitHub que permite crear reportes de bugs, sugerencias o tareas, a las cuales se les asigna un número único (ej. #12)?",
+      "fragmento_codigo": "GitHub [........]",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "Tickets", "es_correcta": false, "feedback": "INCORRECTO. Aunque conceptualmente son tickets, GitHub utiliza otra palabra oficial." },
+        { "texto": "Issues", "es_correcta": true, "feedback": "¡Exacto! Los 'Issues' (problemas/asuntos) son el centro de comunicación y tareas del repositorio." },
+        { "texto": "Tasks", "es_correcta": false, "feedback": "INCORRECTO. Existen 'Task lists' dentro de la descripción, pero la herramienta principal es 'Issues'." }
+      ]
+    },
+    {
+      "id": "q8",
+      "tipo": "verdadero_falso",
+      "enunciado": "GitHub Projects te permite crear tableros visuales tipo Kanban para organizar los Issues de tu equipo en columnas como 'Todo', 'In Progress' y 'Done'.",
+      "puntos": 5,
+      "opciones": [
+        {
+          "texto": "Verdadero",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Es una excelente herramienta de gestión ágil (Scrum/Kanban) nativa, sin necesidad de usar plataformas externas."
+        },
+        {
+          "texto": "Falso",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. GitHub sí ofrece tableros de gestión completos a través de su pestaña 'Projects'."
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "tipo": "encuentra_error",
+      "enunciado": "Arreglaste el error reportado en el Issue número 89 y quieres que GitHub lo cierre automáticamente cuando hagas push. Encuentra el error de sintaxis en tu mensaje de commit:",
+      "fragmento_codigo": "git commit -m \"Arregla error de login. Closes @89\"",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "git commit -m", "es_correcta": false, "feedback": "INCORRECTO. El formato del comando commit es perfecto." },
+        { "texto": "\"Arregla error de login.", "es_correcta": false, "feedback": "INCORRECTO. El título del mensaje está bien." },
+        { "texto": "Closes", "es_correcta": false, "feedback": "INCORRECTO. 'Closes' es una de las palabras clave correctas (junto con Fixes o Resolves)." },
+        { "texto": "@89\"", "es_correcta": true, "feedback": "¡Correcto! El símbolo de arroba (@) sirve para etiquetar usuarios. Para referenciar Issues debes usar el numeral (ej. `#89`)." }
+      ]
+    },
+    {
+      "id": "q10",
+      "tipo": "ordenar",
+      "enunciado": "Ordena el ciclo de vida profesional de una tarea (Issue) desde que se reporta un error hasta que se soluciona en GitHub:",
+      "puntos": 10,
+      "orden_correcto": [
+        "1. El cliente o QA reporta un error creando un 'Issue' (#45)",
+        "2. El líder asigna (Assign) ese Issue a un programador",
+        "3. El programador crea una rama local, lo soluciona y hace commit referenciando el Issue",
+        "4. El programador sube su rama y abre un Pull Request (PR)",
+        "5. El equipo aprueba el PR, se fusiona a 'main' y el Issue #45 se cierra automáticamente"
+      ],
+      "feedback_correcto": "¡Brillante! Este es exactamente el estándar industrial. Si entienden esto, están listos para trabajar en cualquier empresa de software del mundo.",
+      "feedback_incorrecto": "INCORRECTO. El flujo lógico es: Crear el reporte (Issue), Asignarlo, Programar en rama local, Subir el PR para revisión, y finalmente Fusionar para que se cierre."
     }
+  ]
 }
