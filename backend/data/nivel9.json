@@ -1,0 +1,73 @@
+{
+  "id": 9,
+  "modulo_id": "m9",
+  "titulo": "Conflictos y Fusiones Seguras",
+
+  "configuracion": {
+    "puntos_minimos_aprobar": 70
+  },
+
+  "contenido_wiki": {
+    "cuerpo_markdown": "# Fusiones (Merges)\n- **Conflictos:** Ocurren si dos personas modifican la misma línea de un archivo. Debes borrarlos manualmente.\n- **--no-ff (No Fast Forward):** Fuerza a Git a crear un 'commit de fusión' para mantener la burbuja visual de tu rama en el historial.\n- **Limpieza:** Borra tu rama local tras fusionar."
+  },
+
+  "preguntas": [
+    {
+      "id": "q1",
+      "tipo": "verdadero_falso",
+      "enunciado": "Un conflicto de Git significa que perdiste todo tu código y debes empezar de nuevo.",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Es solo una pausa para que tú decidas qué versión conservar." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Correcto! Solo debes abrir el archivo y borrar el código sobrante manualmente." }
+      ]
+    },
+    {
+      "id": "q2",
+      "tipo": "completar",
+      "enunciado": "Completa el comando que el Auxi exige para forzar el commit de fusión y mantener la historia visual de la rama:",
+      "fragmento_codigo": "git merge [....] feature/mi-rama",
+      "puntos": 20,
+      "opciones": [
+        { "texto": "--no-ff", "es_correcta": true, "feedback": "¡Correcto! 'No Fast Forward' es la clave." },
+        { "texto": "--fast", "es_correcta": false, "feedback": "INCORRECTO. Eso haría lo contrario (aplanar la historia)." }
+      ]
+    },
+    {
+      "id": "q3",
+      "tipo": "encuentra_error",
+      "enunciado": "Encuentra el comando incorrecto en esta buena práctica (limpieza de ramas muertas):",
+      "fragmento_codigo": "git branch -save feature/login",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "git", "es_correcta": false, "feedback": "Correcto." },
+        { "texto": "-save", "es_correcta": true, "feedback": "¡Correcto! Para borrar la rama debe ser -D." },
+        { "texto": "feature/login", "es_correcta": false, "feedback": "Correcto." }
+      ]
+    },
+    {
+      "id": "q4",
+      "tipo": "opcion_multiple",
+      "enunciado": "Alguien fusionó código en 'develop' que afecta tu rama. ¿Qué debes hacer para resolver el conflicto de forma segura?",
+      "puntos": 20,
+      "opciones": [
+        { "texto": "Hacer git push forzado (-f) para sobreescribir su trabajo", "es_correcta": false, "feedback": "INCORRECTO. Jamás sobrescribas el trabajo ajeno." },
+        { "texto": "Traer 'develop' a mi rama, resolver el conflicto ahí mismo, y luego subir", "es_correcta": true, "feedback": "¡Correcto! Si algo explota en tu rama, solo te afecta a ti." }
+      ]
+    },
+    {
+      "id": "q5",
+      "tipo": "ordenar",
+      "enunciado": "Ordena el flujo de trabajo final para integrar tu código a develop:",
+      "puntos": 30,
+      "orden_correcto": [
+        "git checkout develop",
+        "git pull origin develop",
+        "git merge --no-ff feature/tu-rama",
+        "git branch -D feature/tu-rama"
+      ],
+      "feedback_correcto": "¡Perfecto! Vas, actualizas, fusionas y limpias la basura.",
+      "feedback_incorrecto": "Recuerda: Te mueves a develop -> actualizas develop -> haces el merge de tu rama -> borras tu rama antigua."
+    }
+  ]
+}
