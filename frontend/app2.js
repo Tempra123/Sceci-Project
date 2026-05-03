@@ -1,5 +1,4 @@
 /* ═══════════════════════════════════════════════════════
-   GITCHALLENGE — app2.js
    Juego del Ahorcado basado en los enunciados de nivel{N}.json
    ═══════════════════════════════════════════════════════ */
 
@@ -46,7 +45,7 @@ const dom = {
   progressWrap:  document.getElementById('progress-wrap'),
 };
 
-/* ── Partes del ahorcado (SVG paths que se muestran progresivamente) ── */
+
 const HORCA_PARTES = [
   'parte-base',
   'parte-poste',
