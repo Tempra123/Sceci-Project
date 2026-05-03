@@ -1,4 +1,4 @@
-  {
+{
   "_instruccion_general": "Archivo de Nivel 12: Herramientas de GitHub Pro. No modificar las claves que inician con guion bajo.",
   
   "id": 12,
@@ -7,4 +7,9 @@
   
   "configuracion": {
     "puntos_minimos_aprobar": 70
+  },
+  "contenido_wiki": {
+    "_instruccion_wiki": "Usa formato Markdown. Usa \\n para los saltos de línea y escapa las comillas dobles si es necesario.",
+    "cuerpo_markdown": "# Herramientas de GitHub Pro\n\nDominar los comandos básicos está muy bien, pero GitHub ofrece un ecosistema completo para gestionar proyectos de software como un profesional.\n\n## 1. El archivo `.gitignore` (Vital para ingenieros)\nHay archivos que **jamás** deben subirse a GitHub: contraseñas, variables de entorno, carpetas pesadas (como `node_modules`) o archivos basura del sistema operativo. Para evitar subir esto por accidente, creas un archivo de texto llamado exactamente `.gitignore` en la raíz de tu proyecto y escribes en él los nombres de las carpetas o extensiones que Git debe ignorar por completo.\n\n## 2. GitHub Issues y Projects\n- **Issues:** Es un sistema integrado para reportar bugs (errores), solicitar nuevas funcionalidades o discutir tareas. Cada Issue tiene un número (ej. `#42`).\n- **Projects:** Son tableros Kanban (al estilo Trello o Jira) integrados en GitHub. Te permiten mover tus Issues por columnas como 'Por hacer', 'En progreso' y 'Terminado'.\n\n## 3. GitHub Pages\nEs un servicio gratuito de GitHub que te permite alojar aplicaciones web estáticas (HTML, CSS, JS) directamente desde tu repositorio. ¡Es perfecto para portafolios, documentación o proyectos como este juego que estás creando!\n\n## 4. Truco Pro: Cerrar Issues desde el Commit\nSi en tu mensaje de commit escribes palabras clave como `Closes #42` o `Fixes #42`, GitHub automáticamente cerrará el Issue número 42 cuando ese commit llegue a la rama principal."
   }
+}
