@@ -7,4 +7,9 @@
   
   "configuracion": {
     "puntos_minimos_aprobar": 70
+  },
+  "contenido_wiki": {
+    "_instruccion_wiki": "Usa formato Markdown. Usa \\n para los saltos de línea y escapa las comillas dobles si es necesario.",
+    "cuerpo_markdown": "# Flujo Colaborativo y Open Source\n\nCuando trabajas en proyectos de código abierto (Open Source) o en grandes empresas, normalmente no tienes permisos para hacer `git push` directamente al repositorio principal. Para aportar tu código, usamos un flujo especial basado en la plataforma (como GitHub).\n\n## 1. El Fork (Bifurcación)\nUn 'Fork' no es un comando de Git de la terminal, es un botón en GitHub. Sirve para crear una **copia exacta** del repositorio de otra persona dentro de tu propia cuenta de GitHub. ¡En tu copia sí tienes todos los permisos!\n\n## 2. El Pull Request (PR)\nUna vez que has clonado tu Fork, creado una rama, hecho tus cambios y subido (`push`) a tu propia copia, es hora de enviarlos al proyecto original. Un **Pull Request** es una petición formal que dice: *'Oye, he mejorado esto en mi copia, ¿puedes revisarlo y fusionarlo en tu proyecto original?'*\n\n## 3. Code Review (Revisión de Código)\nCuando abres un PR, los dueños del proyecto original revisarán tu código línea por línea. Pueden:\n- Dejar comentarios pidiendo cambios.\n- Aprobar el PR (Approve).\n- Rechazar el PR y cerrarlo.\nSi te piden cambios, **no necesitas crear un nuevo PR**. Simplemente haces más commits en tu rama local y haces `git push`; el PR se actualizará mágicamente solo."
   }
+}
