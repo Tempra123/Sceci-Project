@@ -1,0 +1,107 @@
+{
+  "id": 2,
+  "modulo_id": "m2",
+  "titulo": "Fundamentos de Git",
+
+  "configuracion": {
+    "puntos_minimos_aprobar": 70
+  },
+
+  "contenido_wiki": {
+    "cuerpo_markdown": "# Introducción a Git\nGit es un sistema de control de versiones distribuido (VCS) que permite guardar versiones de archivos a lo largo del tiempo.\n\n## Historia\nFue creado por Linus Torvalds después de problemas con BitKeeper.\n\n## Instalación\nDescargar desde: https://gitscm.com/install/\n\nVerificar instalación:\n- `git --version`\n\n## Configuración básica\n- `git config --global user.name \"Tu Nombre\"`\n- `git config --global user.email \"tu@correo.com\"`\n- `git config --global core.autocrlf true`\n\n## Archivos importantes\n- `README.md`\n- `.gitignore`"
+  },
+
+  "preguntas": [
+    {
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué es Git?",
+      "puntos": 15,
+      "opciones": [
+        {
+          "texto": "Un sistema operativo",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        },
+        {
+          "texto": "Un sistema de control de versiones",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Quién creó Git?",
+      "puntos": 15,
+      "opciones": [
+        {
+          "texto": "Bill Gates",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        },
+        {
+          "texto": "Linus Torvalds",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "Completa el comando para verificar la instalación de Git:",
+      "fragmento_codigo": "git [....]",
+      "puntos": 20,
+      "opciones": [
+        {
+          "texto": "--version",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        },
+        {
+          "texto": "--install",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "tipo": "verdadero_falso",
+      "enunciado": "El flag --global aplica la configuración a todos los repositorios.",
+      "puntos": 20,
+      "opciones": [
+        {
+          "texto": "Verdadero",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        },
+        {
+          "texto": "Falso",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Para qué sirve el archivo .gitignore?",
+      "puntos": 30,
+      "opciones": [
+        {
+          "texto": "Para guardar commits",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        },
+        {
+          "texto": "Para ignorar archivos que no se quieren subir",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        }
+      ]
+    }
+  ]
+}
