@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitChallenge ⚔️ — Niveles</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    .levels-container {
+      max-width: 900px;
+      width: 100%;
+      animation: fadeUp 0.6s ease-out both;
+    }
+
+    .levels-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .levels-header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, #e879f9, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .levels-header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .level-card {
+      padding: 1.8rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      background: rgba(20,15,42,0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      text-align: center;
+    }
+
+    .level-card:hover {
+      border-color: var(--accent);
+      background: rgba(124,58,237,0.15);
+      transform: translateY(-4px);
+    }
+
+    .level-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+
+    .level-title {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .level-info {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .back-btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+    }
+
+    .back-btn:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-layer">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+
+  <div class="levels-container">
+
+    <a href="index.html" class="back-btn">← Atrás</a>
+
+    <div class="levels-header">
+      <h1>Selecciona un Nivel</h1>
+      <p>Domina Git progresivamente. Desbloquea niveles completando los anteriores.</p>
+    </div>
+
+    <div class="levels-grid" id="levelsGrid"></div>
+
+  </div>
+
+  <script>
+    const levels = [
+      { num: 1, name: 'Básico', desc: '8 preguntas' },
+      { num: 2, name: 'Intermedio', desc: '10 preguntas' },
+      { num: 3, name: 'Avanzado', desc: '12 preguntas' },
+      { num: 4, name: 'Experto', desc: '10 preguntas' },
+      { num: 5, name: 'Maestro', desc: '12 preguntas' },
+      { num: 6, name: 'Desafío', desc: '15 preguntas' },
+    ];
+
+    const grid = document.getElementById('levelsGrid');
+    levels.forEach(level => {
+      const card = document.createElement('a');
+      card.href = `game.html?nivel=${level.num}`;
+      card.className = 'level-card';
+      card.innerHTML = `
+        <div class="level-number">Nivel ${level.num}</div>
+        <div class="level-title">${level.name}</div>
+        <div class="level-info">${level.desc}</div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
