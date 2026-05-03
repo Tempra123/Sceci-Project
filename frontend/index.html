@@ -161,7 +161,7 @@
       <div class="badge"><strong>115</strong>&nbsp; Puntos en juego</div>
     </div>
 
-    <!-- Botón principal → redirige a game.html -->
+    
     <a href="game.html" class="btn-primary btn-iniciar">
       ▶ &nbsp; Iniciar
     </a>
@@ -173,17 +173,20 @@
   <span class="nivel-tag">NIVEL 1 · BÁSICO</span>
 
   <script>
-    // Genera partículas flotantes
+    
     const container = document.getElementById('particles');
     for (let i = 0; i < 30; i++) {
       const p = document.createElement('div');
       p.className = 'particle';
       p.style.left            = Math.random() * 100 + 'vw';
-      p.style.width           = p.style.height = (Math.random() * 3 + 2) + 'px';
+      p.style.width           = p.style.height = (Math.random() * 5 + 4) + 'px';
       p.style.animationDuration = (Math.random() * 12 + 8) + 's';
       p.style.animationDelay  = (Math.random() * 10) + 's';
       container.appendChild(p);
     }
   </script>
+
+
 </body>
+
 </html>
