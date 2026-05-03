@@ -1,0 +1,113 @@
+{
+  "id": 4,
+  "modulo_id": "m4",
+  "titulo": "Buenas Prácticas y Reglas de Oro en Commits",
+
+  "configuracion": {
+    "puntos_minimos_aprobar": 70
+  },
+
+  "contenido_wiki": {
+    "cuerpo_markdown": "# Buenas Prácticas de Commits\nPara mantener un historial limpio y profesional, existen convenciones estrictas.\n\n## Prefijos comunes\n- `feat`: Nueva funcionalidad.\n- `fix`: Arreglo de un bug.\n- `docs`: Cambios en documentación.\n\n## Reglas de Oro\n- Un commit debe ser **Atómico** (una sola tarea pequeña).\n- Usar verbos en imperativo y en inglés (ej. *add*, *change*).\n- **Cero puntos:** El título no lleva punto final y debe tener máximo 50 caracteres."
+  },
+
+  "preguntas": [
+    {
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué prefijo debes usar en tu commit si acabas de solucionar un bug crítico en el código?",
+      "puntos": 15,
+      "opciones": [
+        {
+          "texto": "feat",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. 'feat' es para agregar nuevas funcionalidades."
+        },
+        {
+          "texto": "fix",
+          "es_correcta": true,
+          "feedback": "¡Correcto! 'fix' se usa específicamente para arreglar errores o bugs."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "tipo": "encuentra_error",
+      "enunciado": "Revisa este mensaje de commit y encuentra el error según las Reglas de Oro:",
+      "fragmento_codigo": "feat: add user login system.",
+      "puntos": 20,
+      "opciones": [
+        {
+          "texto": "feat:",
+          "es_correcta": false,
+          "feedback": "El prefijo es correcto para una nueva característica."
+        },
+        {
+          "texto": "add",
+          "es_correcta": false,
+          "feedback": "El verbo imperativo en inglés es la forma correcta de escribirlo."
+        },
+        {
+          "texto": ".",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Cero puntos: el mensaje no debe llevar punto final."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "tipo": "verdadero_falso",
+      "enunciado": "Un commit 'atómico' significa que debes mezclar la solución de 3 bugs y 2 funcionalidades nuevas en un solo guardado para ahorrar espacio en el historial.",
+      "puntos": 20,
+      "opciones": [
+        {
+          "texto": "Verdadero",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Mezclar tareas hace que el historial sea un desastre de deshacer."
+        },
+        {
+          "texto": "Falso",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Un commit debe representar una sola tarea pequeña y clara, sin mezclar."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Cuál es el límite máximo de peso para subir un archivo individual en un commit a GitHub sin que sea rechazado?",
+      "puntos": 20,
+      "opciones": [
+        {
+          "texto": "50 MB",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Tienes un poco más de margen."
+        },
+        {
+          "texto": "100 MB",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Si intentas subir algo más pesado (como una base de datos), GitHub lo rechazará."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "tipo": "completar",
+      "enunciado": "Para evitar subir archivos extremadamente pesados o carpetas con contraseñas (como node_modules o .env), debes declararlos dentro del archivo: [....]",
+      "fragmento_codigo": "[....]",
+      "puntos": 25,
+      "opciones": [
+        {
+          "texto": ".gitignore",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Este archivo le dice a Git qué debe ignorar por completo."
+        },
+        {
+          "texto": ".env",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. En el .env guardas las contraseñas, pero el archivo que le dice a Git que ignore cosas es otro."
+        }
+      ]
+    }
+  ]
+}

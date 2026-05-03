@@ -1,0 +1,102 @@
+{
+  "id": 3,
+  "modulo_id": "m3",
+  "titulo": "GitHub y Repositorios Remotos",
+
+  "configuracion": {
+    "puntos_minimos_aprobar": 70
+  },
+
+  "contenido_wiki": {
+    "cuerpo_markdown": "# GitHub y Repositorios Remotos\nGitHub es una plataforma para alojar repositorios Git en la nube.\n\n## Comandos importantes\n- `git push`: Subir cambios\n- `git pull`: Traer cambios\n- `git clone`: Clonar repositorio"
+  },
+
+  "preguntas": [
+    {
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué es GitHub?",
+      "puntos": 15,
+      "opciones": [
+        {
+          "texto": "Un sistema operativo",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        },
+        {
+          "texto": "Una plataforma para alojar repositorios Git",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué comando se usa para subir cambios?",
+      "puntos": 15,
+      "opciones": [
+        {
+          "texto": "git push",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        },
+        {
+          "texto": "git pull",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "Completa: git clone [....]",
+      "fragmento_codigo": "git clone [....]",
+      "puntos": 20,
+      "opciones": [
+        {
+          "texto": "url",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        },
+        {
+          "texto": "archivo",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "tipo": "verdadero_falso",
+      "enunciado": "git pull trae cambios del repositorio remoto.",
+      "puntos": 20,
+      "opciones": [
+        {
+          "texto": "Verdadero",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        },
+        {
+          "texto": "Falso",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "tipo": "ordenar",
+      "enunciado": "Ordena los pasos para subir cambios:",
+      "puntos": 30,
+      "orden_correcto": [
+        "git add .",
+        "git commit -m \"mensaje\"",
+        "git push origin main"
+      ],
+      "feedback_correcto": "¡Perfecto!",
+      "feedback_incorrecto": "Recuerda: add → commit → push"
+    }
+  ]
+}

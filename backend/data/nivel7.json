@@ -1,0 +1,148 @@
+{
+  "_instruccion_general": "Nivel 7: Gestión de Conflictos (Conflict Resolution).",
+  "id": 7,
+  "modulo_id": "m2",
+  "titulo": "Gestión de Conflictos",
+  "configuracion": {
+    "puntos_minimos_aprobar": 80
+  },
+  "contenido_wiki": {
+    "cuerpo_markdown": "# Módulo 2: Resolución de Conflictos\\n\\n## ¿Por qué ocurre un conflicto?\\nUn conflicto de fusión sucede cuando Git intenta unir dos ramas que han modificado **la misma línea** de un mismo archivo con contenidos distintos. Git no sabe cuál de las dos versiones es la correcta y se detiene para que tú decidas.\\n\\n## Marcadores de Conflicto\\nCuando abres un archivo con conflicto, verás estos símbolos:\\n- `<<<<<<< HEAD`: Indica tus cambios actuales.\\n- `=======`: Es la línea divisoria.\\n- `>>>>>>> branch-name`: Indica los cambios que vienen de la otra rama."
+  },
+  "preguntas": [
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué símbolo utiliza Git para indicar el inicio de tus cambios locales durante un conflicto?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "<<<<<<< HEAD",
+          "es_correcta": true,
+          "feedback": "¡Correcto! HEAD representa tu posición actual y los cambios que ya tenías en tu rama."
+        },
+        {
+          "texto": ">>>>>>> branch-name",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Esos símbolos indican el final de los cambios que vienen de la rama externa."
+        }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 1: SELECCIÓN MÚLTIPLE.",
+      "id": "q2",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué debe hacer un programador cuando Git marca un conflicto de fusión?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Editar el archivo manualmente para elegir el código final y borrar los marcadores de Git.",
+          "es_correcta": true,
+          "feedback": "¡Exacto! El programador debe decidir qué código prevalece."
+        },
+        {
+          "texto": "Esperar a que Git elija la mejor opción automáticamente después de 24 horas.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Git nunca resolverá un conflicto de contenido por sí solo; requiere intervención humana."
+        }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "Después de editar un archivo para resolver un conflicto, debes usar este comando para marcarlo como resuelto:",
+      "fragmento_codigo": "git [....] <archivo>",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "add", "es_correcta": true, "feedback": "¡Correcto! 'git add' le dice a Git que el conflicto en ese archivo ya fue solucionado." },
+        { "texto": "resolve", "es_correcta": false, "feedback": "INCORRECTO. Aunque suene lógico, el comando técnico en Git para confirmar la resolución es 'add'." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 2: COMPLETAR ESPACIOS.",
+      "id": "q4",
+      "tipo": "completar",
+      "enunciado": "Si el conflicto es muy complicado y decides cancelar la fusión por completo para volver al estado anterior, usas:",
+      "fragmento_codigo": "git merge --[....]",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "abort", "es_correcta": true, "feedback": "¡Exacto! El parámetro '--abort' detiene el proceso de merge y deja todo como estaba antes." },
+        { "texto": "cancel", "es_correcta": false, "feedback": "INCORRECTO. El término correcto que reconoce Git para interrumpir la fusión es 'abort'." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q5",
+      "tipo": "ordenar",
+      "enunciado": "Ordena el flujo de trabajo correcto cuando Git te notifica un conflicto de fusión:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "Abrir el archivo afectado en un editor",
+        "Elegir el código final y borrar marcadores (<<<<, ====, >>>>)",
+        "git add <archivo>",
+        "git commit -m 'resolve conflict'"
+      ],
+      "feedback": "¡Muy bien! Ese es el camino seguro para limpiar un conflicto y seguir adelante."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 3: ORDENAR PASOS.",
+      "id": "q6",
+      "tipo": "ordenar",
+      "enunciado": "Ordena de mayor a menor jerarquía los pasos para integrar tu rama evitando conflictos en el servidor:",
+      "puntos": 20,
+      "pasos_correctos": [
+        "git pull (actualizar rama local)",
+        "Resolver conflictos localmente (si existen)",
+        "Verificar que el código compile y funcione",
+        "git push (subir la versión limpia)"
+      ],
+      "feedback": "¡Excelente! Resolver conflictos en tu propia PC antes de subir los cambios es una regla de oro en el desarrollo."
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q7",
+      "tipo": "verdadero_falso",
+      "enunciado": "Si ocurre un conflicto de fusión, Git borrará automáticamente las líneas de código que causaron el problema.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Git nunca borra tu código; se detiene y marca las diferencias para que tú decidas qué conservar." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Correcto! Git preserva ambas versiones dentro del archivo usando marcadores especiales hasta que tú lo resuelvas." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 4: VERDADERO O FALSO.",
+      "id": "q8",
+      "tipo": "verdadero_falso",
+      "enunciado": "Es posible tener un conflicto de fusión incluso si los desarrolladores trabajaron en archivos diferentes.",
+      "puntos": 5,
+      "opciones": [
+        { "texto": "Verdadero", "es_correcta": false, "feedback": "INCORRECTO. Los conflictos de contenido solo ocurren cuando se modifica el mismo archivo en las mismas líneas." },
+        { "texto": "Falso", "es_correcta": true, "feedback": "¡Exacto! Si los cambios son en archivos distintos, Git puede fusionarlos automáticamente sin problemas." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q9",
+      "tipo": "deteccion_error",
+      "enunciado": "Un desarrollador termina de editar un archivo en conflicto, pero olvida borrar las líneas '<<<<<<< HEAD' y '=======', y luego hace el commit. ¿Qué sucederá?",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "Esas líneas se guardarán como parte del código fuente, provocando errores de compilación.", "es_correcta": true, "feedback": "¡Exacto! Git trata esas líneas como texto normal, por lo que romperán tu código si no las eliminas." },
+        { "texto": "Git las borrará automáticamente al detectar que son marcadores de conflicto.", "es_correcta": false, "feedback": "INCORRECTO. Git confía en que tú limpiaste el archivo antes de hacer el 'add' y el 'commit'." }
+      ]
+    },
+    {
+      "_instruccion_pregunta": "TIPO 5: DETECCIÓN DE ERRORES.",
+      "id": "q10",
+      "tipo": "deteccion_error",
+      "enunciado": "Durante un conflicto, el usuario ejecuta 'git commit' directamente después de editar los archivos, sin usar 'git add'. ¿Por qué falla?",
+      "puntos": 15,
+      "opciones": [
+        { "texto": "Porque Git necesita que uses 'add' para confirmar que el archivo ya está resuelto y listo.", "es_correcta": true, "feedback": "¡Correcto! El comando 'add' actúa como el verificador de que la resolución ha terminado." },
+        { "texto": "Porque no se pueden hacer commits durante un conflicto bajo ninguna circunstancia.", "es_correcta": false, "feedback": "INCORRECTO. Sí se puede, pero el flujo obligatorio es siempre: resolver -> add -> commit." }
+      ]
+    }
+  ]
+}
