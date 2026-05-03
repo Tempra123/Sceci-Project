@@ -26,6 +26,32 @@ Antes de correrlo, asegúrate de estar en la terminal (dentro de tu entorno virt
 4. Gana puntos y sube de nivel
 5. Ve tu puntuación final con badges
 
+## 🚀 Cómo correr el proyecto
+
+### Requisitos previos
+- [VS Code](https://code.visualstudio.com/)
+- Extensión **Live Server** instalada en VS Code  
+  _(Extensiones → buscar "Live Server" de Ritwick Dey → Instalar)_
+
+### Pasos
+
+1. **Clona o descarga el repositorio**
+```bash
+   git clone https://github.com/tu-usuario/tu-repo.git
+```
+
+2. **Abre la carpeta del proyecto en VS Code**
+```bash
+   code sceci-project
+```
+   _O simplemente arrastra la carpeta a VS Code._
+
+3. **Inicia Live Server**
+   - Ve a la carpeta `frontend/`
+   - Clic derecho sobre `index.html`
+   - Selecciona **"Open with Live Server"**
+
+4. **Se abrirá el navegador automáticamente en:**
 ## ✨ Características Implementadas
 
 ✅ **6 Niveles progresivos** - Básico a Desafío
