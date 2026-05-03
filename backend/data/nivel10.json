@@ -11,5 +11,95 @@
   "contenido_wiki": {
     "_instruccion_wiki": "Usa formato Markdown. Usa \\n para los saltos de línea y escapa las comillas dobles si es necesario.",
     "cuerpo_markdown": "# Sincronización de Datos\n\nUna vez que tienes tu repositorio local conectado a un remoto (como GitHub), necesitas mover la información entre ambos para trabajar en equipo.\n\n## 1. Subir cambios (`git push`)\nEnvía tus commits locales al servidor.\n- `git push origin main`: Sube la rama 'main' al remoto llamado 'origin'.\n- `git push -u origin main`: Sube la rama y la vincula (tracking) para que en el futuro la terminal sepa a dónde empujar y solo necesites escribir `git push`.\n\n## 2. Descargar cambios con seguridad (`git fetch`)\nDescarga la información nueva del servidor a tu computadora, pero **no toca ni modifica** tus archivos de trabajo actuales. Es como 'mirar antes de cruzar la calle' para ver qué han programado tus compañeros antes de mezclarlo con tu código.\n\n## 3. Descargar y fusionar (`git pull`)\nEs literalmente la combinación automática de dos comandos: `git fetch` seguido de un `git merge`. Descarga los cambios e intenta mezclarlos inmediatamente con tu código actual. Es el comando más usado, pero si tú y un compañero editaron la misma línea del mismo archivo, Git detendrá el proceso y te avisará que hay un **conflicto de fusión**."
-  }
+  },
+  "preguntas": [
+    {
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Cuál es la función principal del comando `git push`?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Descargar el código de GitHub a tu computadora.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Para descargar (tirar) código utilizas `pull` o `fetch`."
+        },
+        {
+          "texto": "Enviar tus commits locales confirmados al repositorio remoto.",
+          "es_correcta": true,
+          "feedback": "¡Correcto! `push` empuja tu historial local hacia el servidor (ej. GitHub)."
+        },
+        {
+          "texto": "Preparar los archivos en el Staging Area.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Esa es la función de `git add`."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "tipo": "verdadero_falso",
+      "enunciado": "El comando `git fetch` modifica los archivos en tu editor de código para que veas inmediatamente lo que hicieron tus compañeros.",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Verdadero",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. `fetch` solo actualiza la base de datos interna de Git, pero deja intacto tu Working Directory (los archivos que estás viendo)."
+        },
+        {
+          "texto": "Falso",
+          "es_correcta": true,
+          "feedback": "¡Correcto! `fetch` es una descarga segura. Para que los archivos se modifiquen en tu editor, debes hacer un `merge` después, o usar directamente `pull`."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "Quieres empujar tu nueva rama a GitHub por primera vez y vincularla para no tener que escribir 'origin rama' la próxima vez. Completa el comando:",
+      "fragmento_codigo": "git push [....] origin feature/nueva-interfaz",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "-a", "es_correcta": false, "feedback": "INCORRECTO. La bandera `-a` suele referirse a 'all' (todo)." },
+        { "texto": "-u", "es_correcta": true, "feedback": "¡Exacto! `-u` (o --set-upstream) crea el vínculo entre tu rama local y la remota." },
+        { "texto": "-m", "es_correcta": false, "feedback": "INCORRECTO. `-m` se usa con el comando `commit` para escribir el mensaje." }
+      ]
+    },
+    {
+      "id": "q4",
+      "tipo": "opcion_multiple",
+      "enunciado": "En realidad, el comando `git pull` hace dos acciones de forma automática bajo el capó. ¿Cuáles son?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "git fetch + git merge",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Primero descarga la información (fetch) y luego intenta fusionarla con tu rama actual (merge)."
+        },
+        {
+          "texto": "git add + git commit",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Esos son los pasos para crear un commit localmente, no para interactuar con el remoto."
+        },
+        {
+          "texto": "git clone + git checkout",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Clone copia todo un repositorio nuevo desde cero."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "tipo": "encuentra_error",
+      "enunciado": "Un compañero de tu equipo intentó enviar su código a la rama principal de GitHub, pero el comando le arrojó un error. Encuentra el fallo:",
+      "fragmento_codigo": "git upload origin main",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "git", "es_correcta": false, "feedback": "INCORRECTO. El programa siempre se llama 'git'." },
+        { "texto": "upload", "es_correcta": true, "feedback": "¡Correcto! En el mundo de Git no existe el comando 'upload'. La palabra correcta es `push`." },
+        { "texto": "origin", "es_correcta": false, "feedback": "INCORRECTO. 'origin' es el nombre estándar y correcto para el servidor remoto." },
+        { "texto": "main", "es_correcta": false, "feedback": "INCORRECTO. 'main' es un nombre válido para la rama principal." }
+      ]
+    }
 }
