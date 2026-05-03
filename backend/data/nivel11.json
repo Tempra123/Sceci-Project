@@ -115,5 +115,74 @@
         { "texto": "merge", "es_correcta": false, "feedback": "INCORRECTO. No necesitas hacer un merge local. GitHub se encarga de eso cuando acepten el PR." },
         { "texto": "pr", "es_correcta": false, "feedback": "INCORRECTO. No existe un subcomando `git pr` en Git por defecto." }
       ]
+    },
+    {
+      "id": "q7",
+      "tipo": "encuentra_error",
+      "enunciado": "Un desarrollador intenta forzar la actualización de su Pull Request añadiendo banderas inventadas al subir los cambios. Encuentra el error sintáctico:",
+      "fragmento_codigo": "git push origin feature-login --update-pr",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "git push origin", "es_correcta": false, "feedback": "INCORRECTO. La base del comando para subir cambios está perfecta." },
+        { "texto": "feature-login", "es_correcta": false, "feedback": "INCORRECTO. Especificar el nombre de la rama es la forma correcta de hacerlo." },
+        { "texto": "--update-pr", "es_correcta": true, "feedback": "¡Correcto! Esa bandera no existe ni es necesaria. Un PR abierto se actualiza solo cada vez que recibe un simple `git push` en esa rama." }
+      ]
+    },
+    {
+      "id": "q8",
+      "tipo": "verdadero_falso",
+      "enunciado": "Es una buena práctica solicitar un Pull Request enviando commits directamente desde tu rama 'main' a la rama 'main' del proyecto original.",
+      "puntos": 5,
+      "opciones": [
+        {
+          "texto": "Verdadero",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Es una pésima práctica. Tu rama main debería mantenerse limpia. Siempre debes usar una rama de característica (feature branch)."
+        },
+        {
+          "texto": "Falso",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Siempre debes crear ramas nuevas (ej. 'feature/arreglo-bug') para cada PR. Así puedes hacer varios PRs simultáneos sin mezclar el código."
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "tipo": "ordenar",
+      "enunciado": "Eres el dueño del proyecto oficial y alguien te envió un Pull Request. Ordena los pasos de una buena Revisión de Código (Code Review):",
+      "puntos": 10,
+      "orden_correcto": [
+        "1. Leer el título y la descripción del PR para entender el propósito",
+        "2. Revisar la pestaña 'Files changed' (Archivos cambiados)",
+        "3. Dejar comentarios o sugerencias si hay errores",
+        "4. Dar click en 'Approve' (Aprobar) cuando el código esté perfecto",
+        "5. Hacer click en 'Merge pull request' para unirlo a tu proyecto"
+      ],
+      "feedback_correcto": "¡Excelente papel de Mantenedor! Ese es el flujo profesional para cuidar la calidad del código de tu proyecto.",
+      "feedback_incorrecto": "INCORRECTO. Debes entender de qué trata, revisar el código, pedir cambios si es necesario, aprobar y finalmente fusionar."
+    },
+    {
+      "id": "q10",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué pasa si fusionan (Merge) tu Pull Request, pero luego de unas semanas el dueño del proyecto elimina su repositorio?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Tu Fork local y en la nube se borran automáticamente para evitar plagio.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. GitHub no borrará tu repositorio Fork solo porque el original haya desaparecido."
+        },
+        {
+          "texto": "Tu Fork sobrevive y se convierte en un repositorio independiente en tu cuenta.",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Tu Fork es tuyo. Si la fuente original se elimina (y no estaba conectada a una organización privada estricta), tu copia permanece intacta."
+        },
+        {
+          "texto": "Pierdes todo el código que hayas aportado mediante Pull Requests.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. El código sigue en el historial de tus ramas en tu propio Fork."
+        }
+      ]
     }
+  ]
 }
