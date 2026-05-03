@@ -1,0 +1,103 @@
+{
+  "id": 8,
+  "modulo_id": "m8",
+  "titulo": "Git Stash, Git Diff y Limpieza de Ramas",
+
+  "configuracion": {
+    "puntos_minimos_aprobar": 70
+  },
+
+  "contenido_wiki": {
+    "cuerpo_markdown": "# Git Stash, Diff y Limpieza\n\n## ¿Qué hacer si otro PR se aprueba antes?\n1. Guardar cambios temporales\n2. Actualizar rama\n3. Recuperar cambios\n4. Resolver conflictos\n\n## Git Stash\nPermite guardar cambios sin hacer commit.\n\n### Comandos:\n- `git stash`\n- `git stash -m \"mensaje\"`\n- `git stash list`\n- `git stash pop`\n\n## Buenas prácticas\nDespués de un merge, eliminar la rama.\n\n- `git branch -d`\n- `git push origin --delete`\n\n## Git Diff\nPermite comparar cambios.\n\n### Comandos:\n- `git diff`\n- `git diff .`\n- `git diff --staged`\n\nSirve para revisar antes de commit o merge."
+  },
+
+  "preguntas": [
+    {
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Para qué sirve git stash?",
+      "puntos": 15,
+      "opciones": [
+        {
+          "texto": "Eliminar commits",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        },
+        {
+          "texto": "Guardar cambios temporalmente sin commit",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué comando recupera los cambios guardados en stash?",
+      "puntos": 15,
+      "opciones": [
+        {
+          "texto": "git stash pop",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        },
+        {
+          "texto": "git stash list",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "tipo": "verdadero_falso",
+      "enunciado": "git diff permite ver cambios antes de hacer commit.",
+      "puntos": 20,
+      "opciones": [
+        {
+          "texto": "Verdadero",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        },
+        {
+          "texto": "Falso",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "tipo": "completar",
+      "enunciado": "Completa el comando para eliminar una rama remota:",
+      "fragmento_codigo": "git push origin [....]",
+      "puntos": 20,
+      "opciones": [
+        {
+          "texto": "--delete",
+          "es_correcta": true,
+          "feedback": "¡Correcto!"
+        },
+        {
+          "texto": "-d",
+          "es_correcta": false,
+          "feedback": "INCORRECTO."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "tipo": "ordenar",
+      "enunciado": "Ordena los pasos correctos cuando otro PR se aprueba antes que el tuyo:",
+      "puntos": 30,
+      "orden_correcto": [
+        "git stash",
+        "git pull origin develop",
+        "git stash pop",
+        "resolver conflictos"
+      ],
+      "feedback_correcto": "¡Perfecto!",
+      "feedback_incorrecto": "Recuerda: guardar → actualizar → recuperar → resolver"
+    }
+  ]
+}
