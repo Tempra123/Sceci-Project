@@ -11,5 +11,94 @@
   "contenido_wiki": {
     "_instruccion_wiki": "Usa formato Markdown. Usa \\n para los saltos de línea y escapa las comillas dobles si es necesario.",
     "cuerpo_markdown": "# Herramientas de GitHub Pro\n\nDominar los comandos básicos está muy bien, pero GitHub ofrece un ecosistema completo para gestionar proyectos de software como un profesional.\n\n## 1. El archivo `.gitignore` (Vital para ingenieros)\nHay archivos que **jamás** deben subirse a GitHub: contraseñas, variables de entorno, carpetas pesadas (como `node_modules`) o archivos basura del sistema operativo. Para evitar subir esto por accidente, creas un archivo de texto llamado exactamente `.gitignore` en la raíz de tu proyecto y escribes en él los nombres de las carpetas o extensiones que Git debe ignorar por completo.\n\n## 2. GitHub Issues y Projects\n- **Issues:** Es un sistema integrado para reportar bugs (errores), solicitar nuevas funcionalidades o discutir tareas. Cada Issue tiene un número (ej. `#42`).\n- **Projects:** Son tableros Kanban (al estilo Trello o Jira) integrados en GitHub. Te permiten mover tus Issues por columnas como 'Por hacer', 'En progreso' y 'Terminado'.\n\n## 3. GitHub Pages\nEs un servicio gratuito de GitHub que te permite alojar aplicaciones web estáticas (HTML, CSS, JS) directamente desde tu repositorio. ¡Es perfecto para portafolios, documentación o proyectos como este juego que estás creando!\n\n## 4. Truco Pro: Cerrar Issues desde el Commit\nSi en tu mensaje de commit escribes palabras clave como `Closes #42` o `Fixes #42`, GitHub automáticamente cerrará el Issue número 42 cuando ese commit llegue a la rama principal."
-  }
+  },
+  "preguntas": [
+    {
+      "id": "q1",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Para qué sirve exactamente el archivo `.gitignore`?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Para indicarle a Git qué archivos y carpetas NO debe rastrear ni subir al repositorio.",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Es tu escudo de seguridad para no subir basura, archivos pesados o contraseñas a la nube."
+        },
+        {
+          "texto": "Para ocultar errores de sintaxis en el código de tu proyecto.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Git no lee el código de tus archivos para buscar errores, solo controla sus versiones."
+        },
+        {
+          "texto": "Para bloquear temporalmente a otros colaboradores en GitHub.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Para administrar colaboradores se usan los 'Settings' del repositorio en GitHub."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "tipo": "encuentra_error",
+      "enunciado": "Tu compañero de equipo quiere ignorar los archivos de configuración, pero creó mal el archivo especial de Git. ¿Cuál es el error en el nombre?",
+      "fragmento_codigo": "touch .ignoregit",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "touch", "es_correcta": false, "feedback": "INCORRECTO. 'touch' es un comando válido en Linux para crear un archivo vacío." },
+        { "texto": ".", "es_correcta": false, "feedback": "INCORRECTO. El archivo DEBE empezar con un punto para estar oculto." },
+        { "texto": "ignoregit", "es_correcta": true, "feedback": "¡Correcto! El nombre exacto y estricto que busca Git es `.gitignore`." }
+      ]
+    },
+    {
+      "id": "q3",
+      "tipo": "completar",
+      "enunciado": "Quieres ignorar TODOS los archivos que terminen en `.log` (archivos de registro del sistema). ¿Qué comodín usas en tu `.gitignore`?",
+      "fragmento_codigo": "[....].log",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "*", "es_correcta": true, "feedback": "¡Exacto! El asterisco (*) actúa como un comodín que significa 'cualquier nombre'." },
+        { "texto": "all", "es_correcta": false, "feedback": "INCORRECTO. 'all.log' solo ignoraría un archivo llamado literalmente 'all.log'." },
+        { "texto": "/", "es_correcta": false, "feedback": "INCORRECTO. La barra se usa para denotar directorios, no como comodín de archivos." }
+      ]
+    },
+    {
+      "id": "q4",
+      "tipo": "verdadero_falso",
+      "enunciado": "Si ya subiste por accidente un archivo pesado a GitHub y luego lo agregas al `.gitignore`, Git lo borrará automáticamente de la nube y dejará de rastrearlo de inmediato.",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Verdadero",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. El `.gitignore` solo funciona para archivos que AÚN NO han sido rastreados. Si ya lo subiste, primero debes usar el comando `git rm --cached <archivo>` para desenlazarlo."
+        },
+        {
+          "texto": "Falso",
+          "es_correcta": true,
+          "feedback": "¡Correcto! El `.gitignore` no tiene efecto retroactivo. Tienes que eliminar el archivo del caché de Git primero para que empiece a ser ignorado."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué tipo de aplicaciones web puedes alojar gratuitamente usando GitHub Pages?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Cualquier aplicación, incluyendo aquellas con bases de datos complejas en SQL y backend en Python.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. GitHub Pages no ejecuta lenguajes de servidor (backend) ni bases de datos."
+        },
+        {
+          "texto": "Sitios web estáticos construidos con HTML, CSS y JavaScript puro.",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Como el proyecto que estás construyendo ahora mismo. Es ideal para Single Page Applications (SPAs) estáticas."
+        },
+        {
+          "texto": "Solamente documentación escrita en formato Markdown.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Aunque es excelente para Markdown, también procesa páginas web completas."
+        }
+      ]
+    }
 }
