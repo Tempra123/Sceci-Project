@@ -101,5 +101,85 @@
         { "texto": "origin", "es_correcta": false, "feedback": "INCORRECTO. 'origin' es el nombre estándar y correcto para el servidor remoto." },
         { "texto": "main", "es_correcta": false, "feedback": "INCORRECTO. 'main' es un nombre válido para la rama principal." }
       ]
+    },
+    {
+      "id": "q6",
+      "tipo": "ordenar",
+      "enunciado": "Vas a empezar a programar tu tarea del día, pero sabes que tu equipo subió cambios a GitHub anoche. Ordena los pasos lógicos para trabajar con seguridad:",
+      "puntos": 15,
+      "orden_correcto": [
+        "git pull origin main (Actualizas tu compu con el trabajo del equipo)",
+        "git switch -c feature/mi-tarea (Creas tu rama nueva)",
+        "Escribes tu código y haces tus commits locales",
+        "git push -u origin feature/mi-tarea (Envías tu trabajo finalizado)"
+      ],
+      "feedback_correcto": "¡Flujo perfecto! Siempre debes actualizar tu rama base antes de crear una nueva, así evitas conflictos.",
+      "feedback_incorrecto": "INCORRECTO. La regla de oro es: 1. Actualiza (pull), 2. Crea tu rama, 3. Trabaja/Commit, 4. Sube (push)."
+    },
+    {
+      "id": "q7",
+      "tipo": "completar",
+      "enunciado": "Acabas de hacer un `git pull`, pero la terminal se detuvo con el mensaje 'Automatic merge failed'. ¿Qué te está indicando Git?",
+      "fragmento_codigo": "Tienes un [........] de fusión.",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "error", "es_correcta": false, "feedback": "Aunque es un problema, Git utiliza un término mucho más específico." },
+        { "texto": "conflicto", "es_correcta": true, "feedback": "¡Exacto! Ocurre un conflicto (Merge Conflict) cuando dos personas editan la misma línea de código al mismo tiempo." },
+        { "texto": "bloqueo", "es_correcta": false, "feedback": "INCORRECTO. Git no te ha bloqueado, simplemente está esperando a que tú decidas qué versión del código se queda." }
+      ]
+    },
+    {
+      "id": "q8",
+      "tipo": "verdadero_falso",
+      "enunciado": "Si el comando 'git push' es rechazado (rejected) porque tus compañeros subieron cambios primero, debes forzar la subida usando 'git push -f' para que tu código sobrescriba el de ellos.",
+      "puntos": 5,
+      "opciones": [
+        {
+          "texto": "Verdadero",
+          "es_correcta": false,
+          "feedback": "¡INCORRECTO Y PELIGROSO! Hacer `push -f` (force) borrará el trabajo de tus compañeros. Lo correcto es hacer `git pull` primero."
+        },
+        {
+          "texto": "Falso",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Jamás debes forzar un push en ramas colaborativas. La solución correcta es hacer un `git pull` para integrar sus cambios con los tuyos primero."
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "tipo": "encuentra_error",
+      "enunciado": "Quieres traer los últimos cambios de la rama 'develop' del servidor, pero sin fusionarlos aún. Encuentra el error en la sintaxis:",
+      "fragmento_codigo": "git fetch origin/develop",
+      "puntos": 10,
+      "opciones": [
+        { "texto": "git", "es_correcta": false, "feedback": "INCORRECTO. 'git' es correcto." },
+        { "texto": "fetch", "es_correcta": false, "feedback": "INCORRECTO. 'fetch' es el comando correcto para descargar sin fusionar." },
+        { "texto": "origin/develop", "es_correcta": true, "feedback": "¡Correcto! La sintaxis correcta separa el remoto de la rama con un espacio: `origin develop`." }
+      ]
+    },
+    {
+      "id": "q10",
+      "tipo": "opcion_multiple",
+      "enunciado": "¿Qué significa la palabra 'origin' que solemos usar en comandos como 'git push origin main'?",
+      "puntos": 10,
+      "opciones": [
+        {
+          "texto": "Es el nombre por defecto que Git le da al repositorio remoto (ej. la URL de GitHub).",
+          "es_correcta": true,
+          "feedback": "¡Correcto! Es un alias o apodo para no tener que escribir toda la URL completa (https://github.com/...) cada vez que haces push."
+        },
+        {
+          "texto": "Es la rama principal de tu computadora donde nacen todas las demás.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. La rama principal suele llamarse 'main', 'master' o 'develop'. 'origin' se refiere al servidor."
+        },
+        {
+          "texto": "Es el creador o dueño original del repositorio.",
+          "es_correcta": false,
+          "feedback": "INCORRECTO. Aunque la traducción literal es origen, en Git hace referencia al servidor en la nube."
+        }
+      ]
     }
+  ]
 }
