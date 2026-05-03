@@ -1,0 +1,10 @@
+  {
+  "_instruccion_general": "Archivo de Nivel 12: Herramientas de GitHub Pro. No modificar las claves que inician con guion bajo.",
+  
+  "id": 12,
+  "modulo_id": "m3",
+  "titulo": "Herramientas de GitHub Pro (.gitignore, Issues y Pages)",
+  
+  "configuracion": {
+    "puntos_minimos_aprobar": 70
+  }
