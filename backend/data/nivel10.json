@@ -1,0 +1,10 @@
+{
+  "_instruccion_general": "Archivo de Nivel 10: Sincronización de Datos. No modificar las claves que inician con guion bajo.",
+  
+  "id": 10,
+  "modulo_id": "m3",
+  "titulo": "Sincronización de Datos (Push, Pull y Fetch)",
+  
+  "configuracion": {
+    "puntos_minimos_aprobar": 70
+  }
